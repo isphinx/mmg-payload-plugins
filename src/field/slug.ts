@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import type { FieldHook } from 'payload/types'
-import type { Field } from 'payload/types'
+
+import type { FieldHook, Field } from 'payload'
 import { deepMerge } from '../util/deepMerge'
 
 

@@ -1,7 +1,11 @@
-import type { CollectionBeforeChangeHook } from 'payload/types'
-import type { FileData, TypeWithID } from 'payload/types'
-
 import { v2 } from 'cloudinary'
+
+import type {
+  CollectionBeforeChangeHook,
+  FileData,
+  TypeWithID
+} from 'payload'
+
 
 interface File {
   buffer: Buffer
