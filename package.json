@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.0.8-alpha.11",
+  "version": "0.0.8-alpha.12",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/payloadcms/payload.git",
+    "url": "git+ssh://git@github.com/payloadcms/payload.git",
     "directory": "packages/payload"
   },
   "scripts": {
