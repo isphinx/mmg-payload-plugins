@@ -1,4 +1,4 @@
-name: Node.js Package
+name: mmg-payload-plugin Package
 
 on:
   push:

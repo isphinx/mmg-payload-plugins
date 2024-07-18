@@ -37,6 +37,8 @@ export const getBeforeChange =
             tempFilePath: file.tempFilePath,
           },
         })
+        if (process.env.NODE_ENV != 'production')
+          console.log(cloudres)
 
         data['url'] = `/${cloudName}/${cloudres.public_id}`
         data['filename'] = data.filename
