@@ -37,14 +37,18 @@ export const getBeforeChange =
             tempFilePath: file.tempFilePath,
           },
         })
-        if (process.env.NODE_ENV != 'production')
-          console.log(cloudres)
+        // if (process.env.NODE_ENV != 'production')
+        //   console.log(cloudres)
 
-        data['url'] = `/${cloudName}/${cloudres.public_id}`
-        data['filename'] = data.filename
+        data['url'] = `https://res.cloudinary.com/${cloudName}/${cloudres.public_id}`
         data['width'] = cloudres.width
         data['height'] = cloudres.height
         data['filesize'] = cloudres.bytes
+        data['cloudinary'] = `https://res.cloudinary.com/${cloudName}/${cloudres.public_id}`
+        if (!!cloudres.pages)
+          data['filename'] = data.filename + `-page-${cloudres.pages}`
+        else
+          data['filename'] = data.filename
       }
       return data
     }

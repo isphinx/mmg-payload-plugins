@@ -15,6 +15,15 @@ export const cloudinaryPlugin = ({ cloudName, apiKey, apiSecret, uploadDir }: Pl
         if (existingCollection.upload === true) {
           return {
             ...existingCollection,
+            fields: [
+              ...existingCollection.fields,
+              {
+                admin: { disabled: true },
+                type: 'text',
+                name: 'cloudinary',
+                required: true,
+              },
+            ],
             hooks: {
               ...(existingCollection.hooks || {}),
               afterDelete: [
@@ -31,8 +40,8 @@ export const cloudinaryPlugin = ({ cloudName, apiKey, apiSecret, uploadDir }: Pl
               disableLocalStorage: true,
               adminThumbnail: ({ doc }) => {
                 const url = doc.url as string
-                const idx = url.slice(1).indexOf('/') + 2;
-                return `${url.slice(0, idx)}c_limit,w_180/${url.slice(idx)}`
+                const idx = url.slice(1).indexOf(cloudName) + cloudName.length + 1;
+                return `${url.slice(0, idx)}/c_limit,w_180${url.slice(idx)}`
               }
             },
           }
