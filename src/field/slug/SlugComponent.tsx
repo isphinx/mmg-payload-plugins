@@ -4,7 +4,7 @@ import React, { useCallback, useEffect } from 'react'
 import {
   useField,
   useFieldProps,
-  Button,
+  // Button,
   TextInput,
   FieldLabel,
   useFormFields,
@@ -59,12 +59,13 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
 
   return (
     <div className="field-type slug-field-component">
-      <div className="flex justify-between items-center">
+      <div
+        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <FieldLabel field={field} htmlFor={`field-${path}`} label={label} />
 
-        <Button className="pb-12" buttonStyle="none" onClick={handleLock}>
+        <div style={{ paddingBottom: '0.3125rem', cursor: 'pointer' }} onClick={handleLock}>
           {checkboxValue ? 'Unlock' : 'Lock'}
-        </Button>
+        </div>
       </div>
 
       <TextInput label={''} value={value} onChange={setValue} path={path} readOnly={readOnly} />
