@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
     "composite": true,
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "bundler",
+    "declaration": true,
+    "declarationDir": "./dist",
     "skipLibCheck": true,
     "outDir": "./dist",
     "rootDir": "./src",
