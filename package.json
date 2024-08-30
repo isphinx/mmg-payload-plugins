@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.0.8-alpha.22",
+  "version": "0.0.8-alpha.23",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -24,16 +24,17 @@
   "devDependencies": {
     "@payloadcms/next": "beta",
     "@payloadcms/ui": "beta",
+    "@types/lodash": "^4.17.7",
     "@types/node": "^20.14.2",
     "eslint": "^9.4.0",
     "lodash": "^4.17.21",
     "payload": "beta",
     "react": "rc",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "ts-node": "^10.9.2"
   },
   "dependencies": {
     "cloudinary": "^2.2.0",
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.4.5"
   }
 }

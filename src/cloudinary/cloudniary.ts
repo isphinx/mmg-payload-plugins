@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { v2 } from 'cloudinary'
 
 import type {
@@ -44,7 +45,7 @@ export const getBeforeChange =
         data['width'] = cloudres.width
         data['height'] = cloudres.height
         data['filesize'] = cloudres.bytes
-        data['cloudinary'] = `https://res.cloudinary.com/${cloudName}/${cloudres.public_id}`
+        data = _.set(data, 'cloudinary', `https://res.cloudinary.com/${cloudName}/${cloudres.public_id}`)
         if (cloudres.format == 'pdf' && !!cloudres.pages)
           data['filename'] = data.filename + `-page-${cloudres.pages}`
         else

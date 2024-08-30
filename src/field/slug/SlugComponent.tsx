@@ -47,7 +47,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
   }, [fieldToUseValue, checkboxValue])
 
   const handleLock = useCallback(
-    (e) => {
+    (e: any) => {
       e.preventDefault()
 
       setCheckboxValue(!checkboxValue)
