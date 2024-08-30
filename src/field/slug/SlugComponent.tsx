@@ -13,7 +13,7 @@ import {
 import type { TextFieldProps } from 'payload'
 
 import { formatSlug } from './formatSlug'
-import './index.scss'
+// import './index.scss'
 
 type SlugComponentProps = {
   fieldToUse: string
@@ -59,10 +59,10 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
 
   return (
     <div className="field-type slug-field-component">
-      <div className="label-wrapper">
+      <div className="flex justify-between items-center">
         <FieldLabel field={field} htmlFor={`field-${path}`} label={label} />
 
-        <Button className="lock-button" buttonStyle="none" onClick={handleLock}>
+        <Button className="pb-12" buttonStyle="none" onClick={handleLock}>
           {checkboxValue ? 'Unlock' : 'Lock'}
         </Button>
       </div>
