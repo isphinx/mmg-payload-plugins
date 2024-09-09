@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from '../../util/cn'
+import { cn } from '@/lib/utils'
 import { Button } from './button'
 import { Input } from './input'
 import { Popover, PopoverContent, PopoverTrigger } from './popover'

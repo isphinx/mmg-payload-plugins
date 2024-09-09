@@ -10,10 +10,11 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "jsx": "react"
-  },
-  "paths": {
-    "@/*": ["./src/*"]
+    "jsx": "react",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/lib/utils": ["./src/util/cn.ts"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

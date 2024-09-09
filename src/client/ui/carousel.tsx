@@ -1,11 +1,11 @@
 'use client'
 
 import * as React from 'react'
+import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 import { Button } from './button'
-import { cn } from '../../util/cn'
+import { cn } from '@/lib/utils'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -196,7 +196,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         onClick={scrollPrev}
         {...props}
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ArrowLeftIcon className="h-4 w-4" />
         <span className="sr-only">Previous slide</span>
       </Button>
     )
@@ -224,7 +224,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         onClick={scrollNext}
         {...props}
       >
-        <ArrowRight className="h-4 w-4" />
+        <ArrowRightIcon className="h-4 w-4" />
         <span className="sr-only">Next slide</span>
       </Button>
     )
@@ -232,82 +232,4 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 )
 CarouselNext.displayName = 'CarouselNext'
 
-// type UseDotButtonType = {
-//   selectedIndex: number
-//   scrollSnaps: number[]
-//   onDotButtonClick: (index: number) => void
-// }
-
-// export const useDotButton = (
-//   emblaApi: CarouselApi
-// ): UseDotButtonType => {
-//   const [selectedIndex, setSelectedIndex] = React.useState(0)
-//   const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([])
-
-//   const onDotButtonClick = React.useCallback(
-//     (index: number) => {
-//       if (!emblaApi) return
-//       emblaApi.scrollTo(index)
-//     },
-//     [emblaApi]
-//   )
-
-//   const onInit = React.useCallback((emblaApi: NonNullable<CarouselApi>) => {
-//     setScrollSnaps(emblaApi.scrollSnapList())
-//   }, [])
-
-//   const onSelect = React.useCallback((emblaApi: NonNullable<CarouselApi>) => {
-//     setSelectedIndex(emblaApi.selectedScrollSnap())
-//   }, [])
-
-//   React.useEffect(() => {
-//     if (!emblaApi) return
-
-//     onInit(emblaApi)
-//     onSelect(emblaApi)
-//     emblaApi.on('reInit', onInit).on('reInit', onSelect).on('select', onSelect)
-//   }, [emblaApi, onInit, onSelect])
-
-//   return {
-//     selectedIndex,
-//     scrollSnaps,
-//     onDotButtonClick
-//   }
-// }
-
-const CarouselDots = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
-    const { api } = useCarousel()
-
-    if (!api) return null
-    const scrollList = api.scrollSnapList()
-    // console.log(scrollList, api)
-    const selectedIndex = api.selectedScrollSnap()
-
-    return scrollList.map((_, index) => (
-      <Button
-        key={index}
-        onClick={() => api.scrollTo(index)}
-        className={cn({ 'bg-foreground': index != selectedIndex }, className)}
-      />
-    ))
-  },
-)
-CarouselDots.displayName = 'CarouselDots'
-
-const CarouselThumbnail = ({ index, children }: { index: number; children: React.ReactNode }) => {
-  const { api } = useCarousel()
-
-  return <button onClick={() => api?.scrollTo(index)}>{children}</button>
-}
-
-export {
-  type CarouselApi,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-  CarouselDots,
-  CarouselThumbnail,
-}
+export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext }
