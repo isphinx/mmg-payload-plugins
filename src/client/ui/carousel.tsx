@@ -232,4 +232,39 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 )
 CarouselNext.displayName = 'CarouselNext'
 
-export { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext }
+const CarouselDots = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
+  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+    const { api } = useCarousel()
+
+    if (!api) return null
+    const scrollList = api.scrollSnapList()
+    // console.log(scrollList, api)
+    const selectedIndex = api.selectedScrollSnap()
+
+    return scrollList.map((_, index) => (
+      <Button
+        key={index}
+        onClick={() => api.scrollTo(index)}
+        className={cn({ 'bg-foreground': index != selectedIndex }, className)}
+      />
+    ))
+  },
+)
+CarouselDots.displayName = 'CarouselDots'
+
+const CarouselThumbnail = ({ index, children }: { index: number; children: React.ReactNode }) => {
+  const { api } = useCarousel()
+
+  return <button onClick={() => api?.scrollTo(index)}>{children}</button>
+}
+
+export {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  CarouselDots,
+  CarouselThumbnail,
+}
