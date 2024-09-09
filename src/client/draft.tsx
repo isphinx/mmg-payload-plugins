@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Button } from './ui/button'
-import { post } from '@/shared/api/util'
+import { post } from '../util/api/fetch'
 
 export default function Draft({ isDraft }: { isDraft: boolean }) {
   if (isDraft)
