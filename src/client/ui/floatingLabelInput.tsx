@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Input } from './input'
 import { Label } from './label'
-import { cn } from '@/lib/utils'
+import { cn } from '../../util/cn'
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 

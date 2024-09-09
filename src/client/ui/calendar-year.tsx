@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from './select'
-import { cn } from '@/lib/utils'
+import { cn } from '../../util/cn'
 
 interface CalendarOptions {
   translate?: 'es' | 'en'
