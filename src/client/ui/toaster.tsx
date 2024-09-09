@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Toaster as Sonner } from 'sonner'
-import { useDarkMode } from '../../util/useDarkMode'
+import { useDarkMode } from '../darkMode'
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 

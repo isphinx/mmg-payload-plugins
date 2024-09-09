@@ -1,5 +1,14 @@
 'use client'
+
 import React from 'react'
+import { FontAwesomeIcon as I } from '@fortawesome/react-fontawesome'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu'
 
 type DARK_MODE = 'dark' | 'light' | 'system'
 
@@ -56,4 +65,34 @@ export function useDarkMode() {
     setDark,
     setSystem,
   }
+}
+
+export function DarkMode() {
+  const { darkMode, setLight, setDark, setSystem } = useDarkMode()
+
+  function renderIcon() {
+    if (darkMode == 'light') return <I icon={faSun} fixedWidth className="text-h1 text-4xl h-8" />
+    else if (darkMode == 'dark')
+      return <I icon={faMoon} fixedWidth className="text-h1 text-4xl h-8" />
+    else if (
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    )
+      return <I icon={faMoon} fixedWidth className="text-h1 text-4xl h-8" />
+    else return <I icon={faSun} fixedWidth className="text-h1 text-4xl h-8" />
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className="px-4 z-40 border-r outline-none">{renderIcon()}</button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="">
+        <DropdownMenuItem onClick={() => setLight()}>Light</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setDark()}>Dark</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setSystem()}>System</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
 }

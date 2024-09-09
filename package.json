@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.0.9-alpha.11",
+  "version": "0.0.9-alpha.12",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -90,23 +90,28 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
-    "./client": {
-      "types": "./dist/client/index.d.ts",
-      "import": "./dist/client/index.js",
-      "require": "./dist/client/index.js"
+    "./api": {
+      "types": "./dist/api/index.d.ts",
+      "import": "./dist/api/index.js",
+      "require": "./dist/api/index.js"
     },
     "./block": {
       "types": "./dist/block/index.d.ts",
       "import": "./dist/block/index.js",
       "require": "./dist/block/index.js"
     },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js",
+      "require": "./dist/client/index.js"
+    },
+    "./client/*": {
+      "types": "./dist/client/*.d.ts",
+      "import": "./dist/client/*.js"
+    },
     "./ui/*": {
       "types": "./dist/client/ui/*.d.ts",
       "import": "./dist/client/ui/*.js"
-    },
-    "./client/": {
-      "types": "./dist/client/*.d.ts",
-      "import": "./dist/client/*.js"
     }
   },
   "packageManager": "yarn@1.22.19+sha256.732620bac8b1690d507274f025f3c6cfdc3627a84d9642e38a07452cc00e0f2e"
