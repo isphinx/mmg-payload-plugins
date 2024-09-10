@@ -10,7 +10,7 @@ import {
   useFormFields,
 } from '@payloadcms/ui'
 
-import type { TextFieldProps } from 'payload'
+import type { TextFieldClientProps } from 'payload'
 
 import { formatSlug } from './formatSlug'
 // import './index.scss'
@@ -18,7 +18,7 @@ import { formatSlug } from './formatSlug'
 type SlugComponentProps = {
   fieldToUse: string
   checkboxFieldPath: string
-} & TextFieldProps
+} & TextFieldClientProps
 
 export const SlugComponent: React.FC<SlugComponentProps> = ({
   field,
@@ -59,8 +59,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
 
   return (
     <div className="field-type slug-field-component">
-      <div
-        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <FieldLabel field={field} htmlFor={`field-${path}`} label={label} />
 
         <div style={{ paddingBottom: '0.3125rem', cursor: 'pointer' }} onClick={handleLock}>
