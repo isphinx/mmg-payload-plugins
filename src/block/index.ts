@@ -1,6 +1,3 @@
-import { ImageSlider } from './image-slider'
-import { ProductSlider } from './product-slider'
-import { GridContent } from './grid-content'
-
-
-export { ImageSlider, ProductSlider, GridContent }
+export { ImageSlider } from './image-slider'
+export { ProductSlider } from './product-slider'
+export { GridContent } from './grid-content'
