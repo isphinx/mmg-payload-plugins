@@ -1,11 +1,15 @@
 import _ from 'lodash'
-import { BasePayload, Endpoint } from 'payload'
+import type { BasePayload, Endpoint } from 'payload'
 import { getToken } from 'next-auth/jwt'
+import recaptcheCheck from './checkRecaptcha'
+import { getClientIp } from 'request-ip'
 
 export async function getUserName(req: Request): Promise<string> {
   const token = await getToken({
     salt: 'authjs.session-token',
-    secret: process.env.AUTH_SECRET || 'LBYSoSgn/6ndkbfkvQ9IJJ6s545UqjjGa86dUKSmJVMjbKth',
+    secret:
+      process.env.AUTH_SECRET ||
+      'LBYSoSgn/6ndkbfkvQ9IJJ6s545UqjjGa86dUKSmJVMjbKth',
     req: req,
   })
 
@@ -43,8 +47,13 @@ async function check_request<User>(
 export function new_endpoint<User, T>(
   endpoint: string,
   loginRequired: boolean,
+  recaptchaCheck: boolean,
   check_args: (body: any, user: User | null) => T,
-  process: (args: T, payload: BasePayload, user: User | null) => Promise<Response>,
+  process: (
+    args: T,
+    payload: BasePayload,
+    user: User | null,
+  ) => Promise<Response>,
 ): Endpoint {
   return {
     path: endpoint,
@@ -52,6 +61,14 @@ export function new_endpoint<User, T>(
     handler: async (req) => {
       try {
         const payload = req.payload
+        const integrition = await payload.findGlobal({ slug: 'Integration' })
+        if (integrition.google?.recaptchaClientKey && recaptchaCheck) {
+          const token = req.headers.get('recaptchatoken')
+          const addr = getClientIp(req)
+          console.log(token, addr)
+          const res = await recaptcheCheck('', token || '', addr || '')
+          console.log(res)
+        }
         const { user, body } = await check_request<User>(
           loginRequired,
           endpoint,

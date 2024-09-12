@@ -6,10 +6,10 @@ export async function get(EP: string) {
   return await res.json()
 }
 
-export async function post(EP: string, body: any) {
+export async function post(EP: string, body: any, headers: any = {}) {
   const res = await fetch('/api' + EP, {
     method: 'POST',
-    headers: { contentType: 'application/json' },
+    headers: { contentType: 'application/json', ...headers },
     body: JSON.stringify(body),
   })
   return await res.json()
