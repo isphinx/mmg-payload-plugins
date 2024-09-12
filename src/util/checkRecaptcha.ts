@@ -14,7 +14,7 @@ export default async function recaptcheCheck(
   ).json()
 
   console.log(
-    `https://www.google.com/recaptcha/api/siteverify?secret=6LfTeHwiAAAAANrp15BbX0tDbsbhYnSYSr2M6qrW&response=${recaptcha}&remoteip=${IPaddr}`,
+    `https://www.google.com/recaptcha/api/siteverify?secret=${secret}response=${recaptcha}&remoteip=${IPaddr}`,
     res,
   )
   if (_.get(res, 'success') !== true) throw new Error('recaptcha failed')

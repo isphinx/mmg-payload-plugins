@@ -64,10 +64,8 @@ export function new_endpoint<User, T>(
         const integrition = await payload.findGlobal({ slug: 'Integration' })
         if (integrition.google?.recaptchaClientKey && recaptchaCheck) {
           const token = req.headers.get('recaptchatoken')
-          const addr = getClientIp(req)
-          console.log(token, addr)
+          const addr = getClientIp(req as any)
           const res = await recaptcheCheck('', token || '', addr || '')
-          console.log(res)
         }
         const { user, body } = await check_request<User>(
           loginRequired,
