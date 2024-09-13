@@ -2,7 +2,9 @@ import type { Block } from 'payload'
 import { Image } from './image'
 import { RichText } from './rich-text'
 import { Card } from './card'
-
+import { StoreInfo } from './store-info'
+import { GoogleMap } from './google-map'
+import { ContactForm } from './contact-form'
 
 export const GridContent: Block = {
   slug: 'gridContent',
@@ -13,20 +15,21 @@ export const GridContent: Block = {
         {
           name: 'width',
           type: 'number',
+
           defaultValue: 1,
           required: true,
           max: 5,
-          min: 1
+          min: 1,
         },
         { type: 'text', name: 'title' },
-      ]
+      ],
     },
     { name: 'background', type: 'upload', relationTo: 'media' },
     { admin: { language: 'css' }, type: 'code', name: 'style' },
     {
       name: 'content',
       type: 'blocks',
-      blocks: [Image, RichText, Card]
+      blocks: [Image, RichText, Card, StoreInfo, GoogleMap, ContactForm],
     },
   ],
 }

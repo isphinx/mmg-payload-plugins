@@ -1,6 +1,5 @@
 import type { Block } from 'payload'
 
-
 export const Image: Block = {
   slug: 'image',
   fields: [
@@ -13,14 +12,15 @@ export const Image: Block = {
           defaultValue: 1,
           required: true,
           max: 5,
+
           min: 1,
-          admin: { width: '20%' }
+          admin: { width: '20%' },
         },
         {
           name: 'link',
-          type: 'text'
+          type: 'text',
         },
-      ]
+      ],
     },
     {
       name: 'media',

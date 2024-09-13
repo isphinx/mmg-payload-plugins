@@ -1,17 +1,16 @@
 import type { Block } from 'payload'
 
-
 export const Card: Block = {
   slug: 'card',
   fields: [
     {
       type: 'row',
       fields: [
-        { type: 'text', name: "title" },
-        { type: 'text', name: "button" },
-      ]
+        { type: 'text', name: 'title' },
+        { type: 'text', name: 'button' },
+      ],
     },
-    { type: 'text', name: "description" },
+    { type: 'text', name: 'description' },
     {
       type: 'row',
       fields: [
@@ -21,10 +20,10 @@ export const Card: Block = {
           defaultValue: 1,
           required: true,
           max: 5,
-          min: 1
+          min: 1,
         },
-        { type: 'text', name: "link" },
-      ]
+        { type: 'text', name: 'link' },
+      ],
     },
     { admin: { language: 'css' }, type: 'code', name: 'style' },
     {
@@ -32,6 +31,6 @@ export const Card: Block = {
       name: 'image',
       relationTo: 'media',
     },
-    { admin: { language: 'css' }, type: 'code', name: "imageStyle" },
+    { admin: { language: 'css' }, type: 'code', name: 'imageStyle' },
   ],
 }

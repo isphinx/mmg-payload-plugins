@@ -1,6 +1,5 @@
 import type { Block } from 'payload'
 
-
 export const ProductSlider: Block = {
   slug: 'productSlider',
   fields: [
@@ -12,6 +11,7 @@ export const ProductSlider: Block = {
           name: 'type',
           type: 'select',
           defaultValue: 'product',
+
           options: [
             { label: 'Pick Product', value: 'product' },
             { label: 'Category', value: 'category' },
@@ -21,7 +21,7 @@ export const ProductSlider: Block = {
         },
         { name: 'buttonTitle', type: 'text' },
         { name: 'buttonLink', type: 'text' },
-      ]
+      ],
     },
     {
       name: 'background',
@@ -42,7 +42,7 @@ export const ProductSlider: Block = {
           relationTo: 'categories',
           hasMany: true,
         },
-      ]
+      ],
     },
     {
       name: 'pickProduct',
@@ -57,7 +57,7 @@ export const ProductSlider: Block = {
           relationTo: 'products',
           hasMany: true,
         },
-      ]
+      ],
     },
   ],
 }

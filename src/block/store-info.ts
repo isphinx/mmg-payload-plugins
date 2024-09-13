@@ -1,7 +1,7 @@
 import type { Block } from 'payload'
 
-export const RichText: Block = {
-  slug: 'richText',
+export const StoreInfo: Block = {
+  slug: 'storeInfo',
   fields: [
     {
       name: 'width',
@@ -11,10 +11,6 @@ export const RichText: Block = {
       max: 5,
       min: 1,
     },
-    {
-      name: 'content',
-
-      type: 'richText',
-    },
+    { admin: { language: 'css' }, type: 'code', name: 'style' },
   ],
 }

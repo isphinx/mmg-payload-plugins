@@ -1,6 +1,5 @@
 import type { Block } from 'payload'
 
-
 export const ImageSlider: Block = {
   slug: 'imageSlider',
   fields: [
@@ -13,11 +12,12 @@ export const ImageSlider: Block = {
         { name: 'buttonLink', type: 'text' },
         {
           name: 'media',
+
           type: 'upload',
           relationTo: 'media',
           required: true,
         },
-      ]
+      ],
     },
   ],
 }
