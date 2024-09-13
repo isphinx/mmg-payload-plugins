@@ -65,7 +65,11 @@ export function new_endpoint<User, T>(
         if (integrition.google?.recaptchaClientKey && recaptchaCheck) {
           const token = req.headers.get('recaptchatoken')
           const addr = getClientIp(req as any)
-          const res = await recaptcheCheck('', token || '', addr || '')
+          const res = await recaptcheCheck(
+            integrition.google?.recaptchaSecretKey || '',
+            token || '',
+            addr || '',
+          )
         }
         const { user, body } = await check_request<User>(
           loginRequired,
