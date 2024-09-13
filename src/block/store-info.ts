@@ -11,6 +11,10 @@ export const StoreInfo: Block = {
       max: 5,
       min: 1,
     },
-    { admin: { language: 'css' }, type: 'code', name: 'style' },
+    {
+      admin: { language: 'css' },
+      type: 'code',
+      name: 'style',
+    },
   ],
 }

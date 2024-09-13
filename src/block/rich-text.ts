@@ -13,8 +13,12 @@ export const RichText: Block = {
     },
     {
       name: 'content',
-
       type: 'richText',
+    },
+    {
+      admin: { language: 'css' },
+      type: 'code',
+      name: 'style',
     },
   ],
 }

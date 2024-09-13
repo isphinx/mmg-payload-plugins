@@ -25,12 +25,20 @@ export const Card: Block = {
         { type: 'text', name: 'link' },
       ],
     },
-    { admin: { language: 'css' }, type: 'code', name: 'style' },
+    {
+      admin: { language: 'css' },
+      type: 'code',
+      name: 'style',
+    },
     {
       type: 'upload',
       name: 'image',
       relationTo: 'media',
     },
-    { admin: { language: 'css' }, type: 'code', name: 'imageStyle' },
+    {
+      admin: { language: 'css' },
+      type: 'code',
+      name: 'imageStyle',
+    },
   ],
 }
