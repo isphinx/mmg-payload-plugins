@@ -4,7 +4,6 @@ import { RichText } from './rich-text'
 import { Card } from './card'
 import { StoreInfo } from './store-info'
 import { GoogleMap } from './google-map'
-import { ContactForm } from './contact-form'
 
 export const GridContent: Block = {
   slug: 'gridContent',
@@ -15,7 +14,6 @@ export const GridContent: Block = {
         {
           name: 'width',
           type: 'number',
-
           defaultValue: 1,
           required: true,
           max: 5,
@@ -29,7 +27,7 @@ export const GridContent: Block = {
     {
       name: 'content',
       type: 'blocks',
-      blocks: [Image, RichText, Card, StoreInfo, GoogleMap, ContactForm],
+      blocks: [Image, RichText, Card, StoreInfo, GoogleMap],
     },
   ],
 }
