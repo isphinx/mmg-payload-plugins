@@ -15,13 +15,25 @@ export async function post(EP: string, body: any, headers: any = {}) {
   return await res.json()
 }
 
-export async function graphql(query: string): Promise<[any, any]> {
+export async function graphql(
+  query: string,
+  options?: {
+    headers?: any,
+    isMutation?: boolean
+  })
+  : Promise<[any, any]> {
   const response = await fetch('/api/graphql', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options?.headers || {})
+    },
     body: JSON.stringify({
       // variables: variables,
-      query: query.replace(/(\r\n|\n|\r|\t)/gm, ' ').replace(/  +/g, ' '),
+      ...(options?.isMutation
+        ? { query: query.replace(/(\r\n|\n|\r|\t)/gm, ' ').replace(/  +/g, ' ') }
+        : { query: query.replace(/(\r\n|\n|\r|\t)/gm, ' ').replace(/  +/g, ' ') }
+      )
     }),
   })
 
