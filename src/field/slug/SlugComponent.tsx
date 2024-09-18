@@ -75,7 +75,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
       <div
         style={{
           display: 'flex',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           alignItems: 'center',
         }}
       >
