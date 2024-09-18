@@ -2,7 +2,6 @@
 import React, { useCallback, useEffect } from 'react'
 
 import {
-  Button,
   FieldLabel,
   TextInput,
   useField,
@@ -11,7 +10,7 @@ import {
 } from '@payloadcms/ui'
 
 import { formatSlug } from './formatSlug'
-import './index.scss'
+// import './index.scss'
 import { TextFieldClientProps } from 'payload'
 
 type SlugComponentProps = {
@@ -67,13 +66,24 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
   const readOnly = readOnlyFromProps || checkboxValue
 
   return (
-    <div className='field-type slug-field-component'>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...(field.admin?.position == 'sidebar' ? {} : { width: '50%' }),
+      }}
+      className='field-type'
+    >
       <div className='label-wrapper'>
         <FieldLabel field={field} htmlFor={`field-${path}`} label={label} />
 
-        <Button className='lock-button' buttonStyle='none' onClick={handleLock}>
+        <div
+          style={{ margin: 0, paddingBottom: '0.3125rem' }}
+          onClick={handleLock}
+        >
           {checkboxValue ? 'Unlock' : 'Lock'}
-        </Button>
+        </div>
       </div>
 
       <TextInput
