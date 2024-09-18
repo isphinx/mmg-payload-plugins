@@ -7,7 +7,7 @@ export const mobileRegExp = new RegExp(
 export const passwordRegExp = new RegExp(/^.{8,}$/)
 
 export function generateStyle(css: string | undefined | null) {
-  if (!!css)
+  if (!!css) {
     return _.chain(css)
       .split('{')
       .pop()
@@ -21,6 +21,7 @@ export function generateStyle(css: string | undefined | null) {
       .keyBy((l) => _.camelCase(l[0]))
       .mapValues((l) => l[1])
       .value()
+  }
   return {}
 }
 

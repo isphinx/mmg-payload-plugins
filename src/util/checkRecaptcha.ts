@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import { getClientIp } from 'request-ip'
 import { CollectionBeforeValidateHook } from 'payload'
+import { getClientIp } from 'request-ip'
 
 export default async function recaptcheCheck(
   secret: string,
@@ -19,27 +19,29 @@ export default async function recaptcheCheck(
     `https://www.google.com/recaptcha/api/siteverify?secret=${secret}response=${recaptcha}&remoteip=${IPaddr}`,
     res,
   )
-  if (_.get(res, 'success') !== true)
+  if (_.get(res, 'success') !== true) {
     throw new Error('recaptcha failed')
-  if (_.get(res, 'score', 0) < 0.4)
+  }
+  if (_.get(res, 'score', 0) < 0.4) {
     throw new Error(`recaptcha score is low ${res?.score}`)
+  }
 
   return true
 }
 
-
-export const recaptchaGraphqlCheck: CollectionBeforeValidateHook =
-  async ({ data, req }) => {
-    const payload = req.payload
-    const integrition = await payload.findGlobal({ slug: 'Integration' })
-    if (integrition.google?.recaptchaSecretKey) {
-      const token = req.headers.get('recaptchatoken')
-      const addr = getClientIp(req as any)
-      await recaptcheCheck(
-        integrition.google?.recaptchaSecretKey || '',
-        token || '',
-        addr || '',
-      )
-    }
-    return data
+export const recaptchaGraphqlCheck: CollectionBeforeValidateHook = async (
+  { data, req },
+) => {
+  const payload = req.payload
+  const integrition = await payload.findGlobal({ slug: 'Integration' })
+  if (integrition.google?.recaptchaSecretKey) {
+    const token = req.headers.get('recaptchatoken')
+    const addr = getClientIp(req as any)
+    await recaptcheCheck(
+      integrition.google?.recaptchaSecretKey || '',
+      token || '',
+      addr || '',
+    )
   }
+  return data
+}

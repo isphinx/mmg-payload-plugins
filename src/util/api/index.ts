@@ -1,1 +1,1 @@
-export { post, get, graphql } from './fetch'
+export { get, graphql, post } from './fetch'

@@ -10,13 +10,14 @@ export function useRecaptcha(key: string, action: string) {
   }, [])
 
   React.useEffect(() => {
-    if (recaptchaToken == '' && key)
+    if (recaptchaToken == '' && key) {
       load(key, {
         autoHideBadge: true,
         useEnterprise: true,
       }).then((recaptcha) =>
-        recaptcha.execute(action).then((token) => SetRecaptchaToken(token)),
+        recaptcha.execute(action).then((token) => SetRecaptchaToken(token))
       )
+    }
   }, [recaptchaToken])
 
   return {

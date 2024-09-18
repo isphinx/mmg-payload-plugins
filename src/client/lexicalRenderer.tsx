@@ -19,7 +19,10 @@ export type AbstractTextNode<Type extends string> = {
   text: string
 } & AbstractNode<Type>
 
-export type BlockNode<BlockData extends Record<string, unknown>, BlockType extends string> = {
+export type BlockNode<
+  BlockData extends Record<string, unknown>,
+  BlockType extends string,
+> = {
   fields: {
     id: string
     blockName: string
@@ -60,19 +63,19 @@ export type LinkNode = {
   children: TextNode[]
   fields:
     | {
-        linkType: 'custom'
-        newTab: boolean
-        url: string
-      }
+      linkType: 'custom'
+      newTab: boolean
+      url: string
+    }
     | {
-        doc: {
-          relationTo: string
-          value: unknown
-        }
-        linkType: 'internal'
-        newTab: boolean
-        url: string
+      doc: {
+        relationTo: string
+        value: unknown
       }
+      linkType: 'internal'
+      newTab: boolean
+      url: string
+    }
 } & AbstractElementNode<'link'>
 
 export type AutoLinkNode = {
@@ -143,16 +146,24 @@ export type Node =
   | AutoLinkNode
 
 export type ElementRenderers = {
-  heading: (props: { children: React.ReactNode } & Omit<HeadingNode, 'children'>) => React.ReactNode
-  list: (props: { children: React.ReactNode } & Omit<ListNode, 'children'>) => React.ReactNode
+  heading: (
+    props: { children: React.ReactNode } & Omit<HeadingNode, 'children'>,
+  ) => React.ReactNode
+  list: (
+    props: { children: React.ReactNode } & Omit<ListNode, 'children'>,
+  ) => React.ReactNode
   listItem: (
     props: { children: React.ReactNode } & Omit<ListItemNode, 'children'>,
   ) => React.ReactNode
   paragraph: (
     props: { children: React.ReactNode } & Omit<ParagraphNode, 'children'>,
   ) => React.ReactNode
-  quote: (props: { children: React.ReactNode } & Omit<QuoteNode, 'children'>) => React.ReactNode
-  link: (props: { children: React.ReactNode } & Omit<LinkNode, 'children'>) => React.ReactNode
+  quote: (
+    props: { children: React.ReactNode } & Omit<QuoteNode, 'children'>,
+  ) => React.ReactNode
+  link: (
+    props: { children: React.ReactNode } & Omit<LinkNode, 'children'>,
+  ) => React.ReactNode
   autolink: (
     props: { children: React.ReactNode } & Omit<AutoLinkNode, 'children'>,
   ) => React.ReactNode
@@ -235,7 +246,9 @@ export const defaultElementRenderers: ElementRenderers = {
     )
   },
   listItem: (element) => {
-    return <li style={getElementStyle<'listitem'>(element)}>{element.children}</li>
+    return (
+      <li style={getElementStyle<'listitem'>(element)}>{element.children}</li>
+    )
   },
   paragraph: (element) => {
     return (
@@ -271,7 +284,9 @@ export const defaultElementRenderers: ElementRenderers = {
     </a>
   ),
   quote: (element) => (
-    <blockquote style={getElementStyle<'quote'>(element)}>{element.children}</blockquote>
+    <blockquote style={getElementStyle<'quote'>(element)}>
+      {element.children}
+    </blockquote>
   ),
   linebreak: () => <br />,
   tab: () => <br />,
@@ -442,14 +457,21 @@ export function LexicalReactRenderer<Blocks extends { [key: string]: any }>({
           ) => React.ReactNode
 
           if (typeof renderer !== 'function') {
-            throw new Error(`Missing block renderer for block type '${node.fields.blockType}'`)
+            throw new Error(
+              `Missing block renderer for block type '${node.fields.blockType}'`,
+            )
           }
 
           return <React.Fragment key={index}>{renderer(node)}</React.Fragment>
         }
 
-        if (node.type === 'linebreak' || node.type === 'tab' || node.type === 'upload') {
-          return <React.Fragment key={index}>{renderElement(node)}</React.Fragment>
+        if (
+          node.type === 'linebreak' || node.type === 'tab'
+          || node.type === 'upload'
+        ) {
+          return (
+            <React.Fragment key={index}>{renderElement(node)}</React.Fragment>
+          )
         }
 
         return (

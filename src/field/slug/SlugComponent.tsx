@@ -2,18 +2,17 @@
 import React, { useCallback, useEffect } from 'react'
 
 import {
+  Button,
+  FieldLabel,
+  TextInput,
   useField,
   useFieldProps,
-  // Button,
-  TextInput,
-  FieldLabel,
   useFormFields,
 } from '@payloadcms/ui'
 
-import type { TextFieldClientProps } from 'payload'
-
 import { formatSlug } from './formatSlug'
-// import './index.scss'
+import './index.scss'
+import { TextFieldClientProps } from 'payload'
 
 type SlugComponentProps = {
   fieldToUse: string
@@ -34,17 +33,27 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
 
   const { value, setValue } = useField<string>({ path })
 
-  const { value: checkboxValue, setValue: setCheckboxValue } = useField<boolean>({
+  const { value: checkboxValue, setValue: setCheckboxValue } = useField<
+    boolean
+  >({
     path: checkboxFieldPath,
   })
 
-  const fieldToUseValue = useFormFields(([fields, dispatch]) => {
-    return fields[fieldToUse].value as string
+  const fieldToUseValue = useFormFields(([fields]) => {
+    return fields[fieldToUse]?.value as string
   })
 
   useEffect(() => {
-    if (checkboxValue && fieldToUseValue) setValue(formatSlug(fieldToUseValue))
-  }, [fieldToUseValue, checkboxValue])
+    if (checkboxValue) {
+      if (fieldToUseValue) {
+        const formattedSlug = formatSlug(fieldToUseValue)
+
+        if (value !== formattedSlug) setValue(formattedSlug)
+      } else {
+        if (value !== '') setValue('')
+      }
+    }
+  }, [fieldToUseValue, checkboxValue, setValue, value])
 
   const handleLock = useCallback(
     (e: any) => {
@@ -58,16 +67,22 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
   const readOnly = readOnlyFromProps || checkboxValue
 
   return (
-    <div className="field-type slug-field-component">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className='field-type slug-field-component'>
+      <div className='label-wrapper'>
         <FieldLabel field={field} htmlFor={`field-${path}`} label={label} />
 
-        <div style={{ paddingBottom: '0.3125rem', cursor: 'pointer' }} onClick={handleLock}>
+        <Button className='lock-button' buttonStyle='none' onClick={handleLock}>
           {checkboxValue ? 'Unlock' : 'Lock'}
-        </div>
+        </Button>
       </div>
 
-      <TextInput label={''} value={value} onChange={setValue} path={path} readOnly={readOnly} />
+      <TextInput
+        label={''}
+        value={value}
+        onChange={setValue}
+        path={path}
+        readOnly={readOnly}
+      />
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import type { Block } from 'payload'
+import { Card } from './card'
+import { GoogleMap } from './google-map'
 import { Image } from './image'
 import { RichText } from './rich-text'
-import { Card } from './card'
 import { StoreInfo } from './store-info'
-import { GoogleMap } from './google-map'
 
 export const GridContent: Block = {
   slug: 'gridContent',

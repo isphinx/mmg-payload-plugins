@@ -1,16 +1,16 @@
 'use client'
 import React from 'react'
-import { Button } from './ui/button'
 import { post } from '../util/api/fetch'
+import { Button } from './ui/button'
 
 export default function Draft({ isDraft }: { isDraft: boolean }) {
-  if (isDraft)
+  if (isDraft) {
     return (
-      <div className="container">
-        <div className="inline-flex justify-between w-full py-3">
-          <div className="text-primary text-2xl font-bold">Draft Mode</div>
+      <div className='container'>
+        <div className='inline-flex justify-between w-full py-3'>
+          <div className='text-primary text-2xl font-bold'>Draft Mode</div>
           <Button
-            variant="destructive"
+            variant='destructive'
             onClick={async () => {
               await post('/draft', {})
               location.reload()
@@ -21,6 +21,7 @@ export default function Draft({ isDraft }: { isDraft: boolean }) {
         </div>
       </div>
     )
+  }
 
   return <></>
 }

@@ -1,12 +1,13 @@
 'use client'
 
-import * as React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import * as React from 'react'
 import { DayPicker } from 'react-day-picker'
 
 import { buttonVariants } from './button'
 
 // import { SelectComponent } from './select'
+import { cn } from '../../util/cn'
 import {
   Select,
   SelectContent,
@@ -16,13 +17,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from './select'
-import { cn } from '../../util/cn'
 
 interface CalendarOptions {
   translate?: 'es' | 'en'
 }
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker> & CalendarOptions
+export type CalendarProps =
+  & React.ComponentProps<typeof DayPicker>
+  & CalendarOptions
 
 const montsLib: Record<'es' | 'en', Record<number, string>> = {
   es: {
@@ -55,7 +57,9 @@ const montsLib: Record<'es' | 'en', Record<number, string>> = {
   },
 }
 
-function Calendar({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) {
+function Calendar(
+  { className, classNames, showOutsideDays = true, ...props }: CalendarProps,
+) {
   return (
     <DayPicker
       disableNavigation
@@ -74,9 +78,11 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         nav_button_next: 'absolute right-1',
         table: 'w-full border-collapse space-y-1',
         head_row: 'flex',
-        head_cell: 'text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]',
+        head_cell:
+          'text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]',
         row: 'flex w-full mt-2',
-        cell: 'h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
+        cell:
+          'h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
         day: cn(
           buttonVariants({ variant: 'ghost' }),
           'h-9 w-9 p-0 font-normal aria-selected:opacity-100',
@@ -88,17 +94,16 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         day_outside:
           'day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30',
         day_disabled: 'text-muted-foreground opacity-50',
-        day_range_middle: 'aria-selected:bg-accent aria-selected:text-accent-foreground',
+        day_range_middle:
+          'aria-selected:bg-accent aria-selected:text-accent-foreground',
         day_hidden: 'invisible',
         ...classNames,
       }}
       components={{
         Chevron: (props) =>
-          props.orientation === 'left' ? (
-            <ChevronLeft className="h-4 w-4" />
-          ) : (
-            <ChevronRight className="h-4 w-4" />
-          ),
+          props.orientation === 'left'
+            ? <ChevronLeft className='h-4 w-4' />
+            : <ChevronRight className='h-4 w-4' />,
       }}
       showOutsideDays={showOutsideDays}
       {...props}
@@ -113,23 +118,24 @@ function CalendarComponent({ translate, ...props }: CalendarProps) {
 
   return (
     <>
-      <div className="flex s;pace-x-2">
+      <div className='flex s;pace-x-2'>
         <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select a fruit" />
+          <SelectTrigger className='w-[180px]'>
+            <SelectValue placeholder='Select a fruit' />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Fruits</SelectLabel>
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="blueberry">Blueberry</SelectItem>
-              <SelectItem value="grapes">Grapes</SelectItem>
-              <SelectItem value="pineapple">Pineapple</SelectItem>
+              <SelectItem value='apple'>Apple</SelectItem>
+              <SelectItem value='banana'>Banana</SelectItem>
+              <SelectItem value='blueberry'>Blueberry</SelectItem>
+              <SelectItem value='grapes'>Grapes</SelectItem>
+              <SelectItem value='pineapple'>Pineapple</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
-        {/*
+        {
+          /*
         <SelectComponent
           items={[...(new Array(12) as number[])].map((_, index) => ({
             label: montsLib[translate ?? 'en'][index + 1],
@@ -153,7 +159,8 @@ function CalendarComponent({ translate, ...props }: CalendarProps) {
             setDate(new Date(date.setFullYear(parseInt(value))))
           }}
         />
-      */}
+      */
+        }
       </div>
       <Calendar {...props} month={date} />
     </>

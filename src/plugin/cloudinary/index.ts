@@ -3,15 +3,14 @@ import type { PluginOptions } from './types'
 
 import { getBeforeChange } from './cloudniary'
 
-
-export const cloudinaryPlugin = ({ cloudName, apiKey, apiSecret, uploadDir }: PluginOptions) =>
+export const cloudinaryPlugin =
+  ({ cloudName, apiKey, apiSecret, uploadDir }: PluginOptions) =>
   (incomingConfig: Config): Config => {
     const config = { ...incomingConfig }
 
     return {
       ...config,
       collections: (config.collections || []).map((existingCollection) => {
-
         if (existingCollection.upload === true) {
           return {
             ...existingCollection,
@@ -40,9 +39,10 @@ export const cloudinaryPlugin = ({ cloudName, apiKey, apiSecret, uploadDir }: Pl
               disableLocalStorage: true,
               adminThumbnail: ({ doc }) => {
                 const url = doc.url as string
-                const idx = url.slice(1).indexOf(cloudName) + cloudName.length + 1;
+                const idx = url.slice(1).indexOf(cloudName) + cloudName.length
+                  + 1
                 return `${url.slice(0, idx)}/c_limit,w_180${url.slice(idx)}`
-              }
+              },
             },
           }
         }

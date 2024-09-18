@@ -1,15 +1,14 @@
 import _ from 'lodash'
-import type { BasePayload, Endpoint } from 'payload'
 import { getToken } from 'next-auth/jwt'
-import recaptcheCheck from './checkRecaptcha'
+import type { BasePayload, Endpoint } from 'payload'
 import { getClientIp } from 'request-ip'
+import recaptcheCheck from './checkRecaptcha'
 
 export async function getUserName(req: Request): Promise<string> {
   const token = await getToken({
     salt: 'authjs.session-token',
-    secret:
-      process.env.AUTH_SECRET ||
-      'LBYSoSgn/6ndkbfkvQ9IJJ6s545UqjjGa86dUKSmJVMjbKth',
+    secret: process.env.AUTH_SECRET
+      || 'LBYSoSgn/6ndkbfkvQ9IJJ6s545UqjjGa86dUKSmJVMjbKth',
     req: req,
   })
 

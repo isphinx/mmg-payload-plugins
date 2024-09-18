@@ -1,5 +1,5 @@
-import React from 'react'
 import { FileData } from 'payload'
+import React from 'react'
 
 interface Props {
   media: FileData & { cloudinary: string }
@@ -7,14 +7,19 @@ interface Props {
   isSmall?: boolean
 }
 
-export default function CloudinaryMedia({ media, className, isSmall = false }: Props) {
+export default function CloudinaryMedia(
+  { media, className, isSmall = false }: Props,
+) {
   if (media.mimeType) {
-    if (media.mimeType.startsWith('image'))
+    if (media.mimeType.startsWith('image')) {
       return <Image media={media} className={className} isSmall={isSmall} />
-    if (media.mimeType.endsWith('video'))
+    }
+    if (media.mimeType.endsWith('video')) {
       return <Video media={media} className={className} isSmall={isSmall} />
-    if (media.mimeType.endsWith('pdf'))
+    }
+    if (media.mimeType.endsWith('pdf')) {
       return <Pdf media={media} className={className} isSmall={isSmall} />
+    }
   }
 
   return <div>Wrong mimiType{media.mimeType}</div>
@@ -30,10 +35,14 @@ function Image({ media, className, isSmall }: Props) {
     return (
       <img
         className={className}
-        sizes="(max-width: 1600px) 397px, 788px"
+        sizes='(max-width: 1600px) 397px, 788px'
         srcSet={[
-          `${image.cloudinary.slice(0, idx)}q_auto/c_scale,w_397${image.cloudinary.slice(idx)} w397`,
-          `${image.cloudinary.slice(0, idx)}q_auto/c_scale,w_788${image.cloudinary.slice(idx)} w788`,
+          `${image.cloudinary.slice(0, idx)}q_auto/c_scale,w_397${
+            image.cloudinary.slice(idx)
+          } w397`,
+          `${image.cloudinary.slice(0, idx)}q_auto/c_scale,w_788${
+            image.cloudinary.slice(idx)
+          } w788`,
         ].join(',')}
         src={image.cloudinary}
         alt={image.filename || ''}
@@ -41,7 +50,13 @@ function Image({ media, className, isSmall }: Props) {
     )
   }
 
-  return <img className={className} src={image.cloudinary} alt={image.filename || ''} />
+  return (
+    <img
+      className={className}
+      src={image.cloudinary}
+      alt={image.filename || ''}
+    />
+  )
 }
 
 function Video({ media }: Props) {

@@ -1,11 +1,11 @@
 'use client'
 
+import { Paintbrush } from 'lucide-react'
 import React from 'react'
 import { cn } from '../../util/cn'
 import { Button } from './button'
 import { Input } from './input'
 import { Popover, PopoverContent, PopoverTrigger } from './popover'
-import { Paintbrush } from 'lucide-react'
 
 export function GradientPicker({
   background,
@@ -38,32 +38,38 @@ export function GradientPicker({
             className,
           )}
         >
-          <div className="flex w-full items-center gap-2">
-            {background ? (
-              <div className="h-4 w-4 rounded transition-all" style={{ background }}></div>
-            ) : (
-              <Paintbrush className="h-4 w-4" />
-            )}
-            <div className="flex-1 truncate">{background ? background : 'Pick a color'}</div>
+          <div className='flex w-full items-center gap-2'>
+            {background
+              ? (
+                <div
+                  className='h-4 w-4 rounded transition-all'
+                  style={{ background }}
+                >
+                </div>
+              )
+              : <Paintbrush className='h-4 w-4' />}
+            <div className='flex-1 truncate'>
+              {background ? background : 'Pick a color'}
+            </div>
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-64">
-        <div className="inline-flex space-x-1">
+      <PopoverContent className='w-64'>
+        <div className='inline-flex space-x-1'>
           {solids.map((s) => (
             <div
               key={s}
               style={{ background: s }}
-              className="h-6 w-6 cursor-pointer rounded-md active:scale-105"
+              className='h-6 w-6 cursor-pointer rounded-md active:scale-105'
               onClick={() => setBackground(s)}
             />
           ))}
         </div>
 
         <Input
-          id="custom"
+          id='custom'
           value={background}
-          className="col-span-2 mt-4 h-8"
+          className='col-span-2 mt-4 h-8'
           onChange={(e) => setBackground(e.currentTarget.value)}
         />
       </PopoverContent>
