@@ -68,14 +68,17 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         ...(field.admin?.position == 'sidebar' ? {} : { width: '50%' }),
       }}
       className='field-type'
     >
-      <div className='label-wrapper'>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <FieldLabel field={field} htmlFor={`field-${path}`} label={label} />
 
         <div
