@@ -19,7 +19,6 @@ export async function graphql(
   query: string,
   options?: {
     headers?: any
-    isMutation?: boolean
   },
 ): Promise<[any, any]> {
   const response = await fetch('/api/graphql', {
@@ -30,13 +29,7 @@ export async function graphql(
     },
     body: JSON.stringify({
       // variables: variables,
-      ...(options?.isMutation
-        ? {
-          query: query.replace(/(\r\n|\n|\r|\t)/gm, ' ').replace(/  +/g, ' '),
-        }
-        : {
-          query: query.replace(/(\r\n|\n|\r|\t)/gm, ' ').replace(/  +/g, ' '),
-        }),
+      query: query.replace(/(\r\n|\n|\r|\t)/gm, ' ').replace(/  +/g, ' '),
     }),
   })
 

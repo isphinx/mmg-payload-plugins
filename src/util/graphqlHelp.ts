@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { getToken } from 'next-auth/jwt'
-import { BasePayload, PayloadRequest } from 'payload'
+import { PayloadRequest } from 'payload'
 import { getClientIp } from 'request-ip'
 import recaptcheCheck from './checkRecaptcha'
 
@@ -22,7 +22,7 @@ async function getUser<User>(req: PayloadRequest): Promise<User | null> {
   return null
 }
 
-export function graphQLHelper<User>(
+export function graphQLHelper<User, BasePayload>(
   slug: string,
   loginRequired: boolean,
   recaptchaCheck: boolean,
@@ -32,8 +32,11 @@ export function graphQLHelper<User>(
     user: User | null,
   ) => Promise<object>,
 ) {
-  return async (_obj: any, args: any, context: any, _info: any) => {
+  return async (_obj: any, args: any, context: any, info: any) => {
     try {
+      context.req.payload.logger.info(
+        `${info.fieldName}: ${JSON.stringify(args)}`,
+      )
       const user = await getUser<User>(context.req)
       if (loginRequired) {
         if (!user) throw new Error('No User')
