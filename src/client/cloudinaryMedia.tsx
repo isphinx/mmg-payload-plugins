@@ -30,20 +30,20 @@ function Image({ media, className, isSmall }: Props) {
   if (!image.cloudinary) return <>Empty URL</>
 
   if (!isSmall && image.width && image.width > 800) {
-    const idx = image.cloudinary.slice(1).indexOf('/') + 2
+    const idx = 49 // image.cloudinary.slice(1).indexOf('/') + 2
 
     return (
       <img
         className={className}
         sizes='(max-width: 1600px) 397px, 788px'
         srcSet={[
-          `${image.cloudinary.slice(0, idx)}q_auto/c_scale,w_397${
+          `${image.cloudinary.slice(0, idx)}q_auto/c_scale%2Cw_397/${
             image.cloudinary.slice(idx)
           } w397`,
-          `${image.cloudinary.slice(0, idx)}q_auto/c_scale,w_788${
+          `${image.cloudinary.slice(0, idx)}q_auto/c_scale%2Cw_788/${
             image.cloudinary.slice(idx)
           } w788`,
-        ].join(',')}
+        ].join(',\n')}
         src={image.cloudinary}
         alt={image.filename || ''}
       />
