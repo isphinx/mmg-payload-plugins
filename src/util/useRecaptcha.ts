@@ -3,14 +3,14 @@ import React from 'react'
 import { load } from 'recaptcha-v3'
 
 export function useRecaptcha(key: string, action: string) {
-  const [recaptchaToken, SetRecaptchaToken] = React.useState<string>('')
+  const [recaptchatoken, SetRecaptchaToken] = React.useState<string>('')
 
   const reset = React.useCallback(() => {
     SetRecaptchaToken('')
   }, [])
 
   React.useEffect(() => {
-    if (recaptchaToken == '' && key) {
+    if (recaptchatoken == '' && key) {
       load(key, {
         autoHideBadge: true,
         useEnterprise: true,
@@ -18,10 +18,10 @@ export function useRecaptcha(key: string, action: string) {
         recaptcha.execute(action).then((token) => SetRecaptchaToken(token))
       )
     }
-  }, [recaptchaToken])
+  }, [recaptchatoken])
 
   return {
-    recaptchaToken,
+    recaptchatoken,
     reset,
   }
 }
