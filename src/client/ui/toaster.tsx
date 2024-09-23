@@ -11,7 +11,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
 
   return (
     <Sonner
-      position='top-right'
+      position={window.screen.width >= 768 ? 'bottom-left' : 'top-left'}
       richColors={true}
       theme={darkMode}
       className='toaster group'
