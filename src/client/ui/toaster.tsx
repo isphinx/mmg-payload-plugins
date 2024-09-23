@@ -8,10 +8,17 @@ type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
   const { darkMode } = useDarkMode()
+  const [position, setPosition] = React.useState<ToasterProps['position']>(
+    'top-right',
+  )
+
+  React.useEffect(() => {
+    if (window.innerWidth >= 768) setPosition('bottom-right')
+  }, [position])
 
   return (
     <Sonner
-      position={window.screen.width >= 768 ? 'bottom-left' : 'top-left'}
+      position={position}
       richColors={true}
       theme={darkMode}
       className='toaster group'
