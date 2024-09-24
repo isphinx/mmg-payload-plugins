@@ -12,10 +12,6 @@ export const GoogleMap: Block = {
       min: 1,
     },
     {
-      type: 'text',
-      name: 'embedUrl',
-    },
-    {
       admin: { language: 'css' },
       type: 'code',
       name: 'style',

@@ -1,6 +1,8 @@
+'use client'
 import * as React from 'react'
 
 import { cn } from '../../util/cn'
+import { useFormField } from './form'
 import { Input } from './input'
 import { Label } from './label'
 
@@ -44,11 +46,16 @@ type FloatingLabelInputProps = InputProps & { label?: string }
 const FloatingLabelInput = React.forwardRef<
   React.ElementRef<typeof FloatingInput>,
   React.PropsWithoutRef<FloatingLabelInputProps>
->(({ id, label, ...props }, ref) => {
+>(({ id, label, children, ...props }, ref) => {
+  const { error, formMessageId } = useFormField()
+  const body = error ? String(error?.message) : children
+
   return (
     <div className='relative'>
       <FloatingInput ref={ref} id={id} {...props} />
-      <FloatingLabel htmlFor={id}>{label}</FloatingLabel>
+      <FloatingLabel className={error && 'text-destructive'} htmlFor={id}>
+        {label}
+      </FloatingLabel>
     </div>
   )
 })

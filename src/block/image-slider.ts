@@ -8,8 +8,13 @@ export const ImageSlider: Block = {
       type: 'array',
       fields: [
         { name: 'title', type: 'text' },
-        { name: 'buttonName', type: 'text' },
-        { name: 'buttonLink', type: 'text' },
+        {
+          type: 'row',
+          fields: [
+            { name: 'buttonName', type: 'text' },
+            { name: 'buttonLink', type: 'text' },
+          ],
+        },
         {
           name: 'media',
 
