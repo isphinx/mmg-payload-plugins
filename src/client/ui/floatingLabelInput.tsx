@@ -46,14 +46,17 @@ type FloatingLabelInputProps = InputProps & { label?: string }
 const FloatingLabelInput = React.forwardRef<
   React.ElementRef<typeof FloatingInput>,
   React.PropsWithoutRef<FloatingLabelInputProps>
->(({ id, label, children, ...props }, ref) => {
-  const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message) : children
+>(({ id, label, className, children, ...props }, ref) => {
+  const { error } = useFormField()
+  // const body = error ? String(error?.message) : children
 
   return (
     <div className='relative'>
       <FloatingInput ref={ref} id={id} {...props} />
-      <FloatingLabel className={error && 'text-destructive'} htmlFor={id}>
+      <FloatingLabel
+        className={cn(error && 'text-destructive', className)}
+        htmlFor={id}
+      >
         {label}
       </FloatingLabel>
     </div>
