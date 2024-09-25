@@ -77,24 +77,46 @@ export function DarkMode() {
 
   function renderIcon() {
     if (darkMode == 'light') {
-      return <I icon={faSun} fixedWidth className='text-h1 text-4xl h-8' />
+      return (
+        <I
+          icon={faSun}
+          fixedWidth
+          className='hover:text-primary text-4xl h-8'
+        />
+      )
     } else if (darkMode == 'dark') {
-      return <I icon={faMoon} fixedWidth className='text-h1 text-4xl h-8' />
+      return (
+        <I
+          icon={faMoon}
+          fixedWidth
+          className='hover:text-primary text-4xl h-8'
+        />
+      )
     } else if (
       typeof window !== 'undefined'
       && window.matchMedia
       && window.matchMedia('(prefers-color-scheme: dark)').matches
     ) {
-      return <I icon={faMoon} fixedWidth className='text-h1 text-4xl h-8' />
-    } else return <I icon={faSun} fixedWidth className='text-h1 text-4xl h-8' />
+      return (
+        <I
+          icon={faMoon}
+          fixedWidth
+          className='hover:text-primary text-4xl h-8'
+        />
+      )
+    } else {return (
+        <I
+          icon={faSun}
+          fixedWidth
+          className='hover:text-primary text-4xl h-8'
+        />
+      )}
   }
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button className='px-4 z-40 border-r outline-none'>
-          {renderIcon()}
-        </button>
+      <DropdownMenuTrigger className='px-4 z-40 border-r outline-none'>
+        {renderIcon()}
       </DropdownMenuTrigger>
       <DropdownMenuContent className=''>
         <DropdownMenuItem onClick={() => setLight()}>Light</DropdownMenuItem>

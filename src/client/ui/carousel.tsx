@@ -273,6 +273,7 @@ const CarouselDots = React.forwardRef<
     return scrollList.map((_, index) => (
       <Button
         key={index}
+        aria-label={index.toString()}
         onClick={() => api.scrollTo(index)}
         className={cn({ 'bg-foreground': index != selectedIndex }, className)}
       />
@@ -291,11 +292,11 @@ const CarouselThumbnail = (
 
 export {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselDots,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
   CarouselThumbnail,
-  type CarouselApi,
 }
