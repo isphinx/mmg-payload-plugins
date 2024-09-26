@@ -64,4 +64,24 @@ const FloatingLabelInput = React.forwardRef<
 })
 FloatingLabelInput.displayName = 'FloatingLabelInput'
 
-export { FloatingInput, FloatingLabel, FloatingLabelInput }
+const FloatingLabelInputRsc = React.forwardRef<
+  React.ElementRef<typeof FloatingInput>,
+  React.PropsWithoutRef<FloatingLabelInputProps>
+>(({ id, label, children, ...props }, ref) => {
+  return (
+    <div className='relative'>
+      <FloatingInput ref={ref} id={id} {...props} />
+      <FloatingLabel htmlFor={id}>
+        {label}
+      </FloatingLabel>
+    </div>
+  )
+})
+FloatingLabelInput.displayName = 'FloatingLabelInputRsc'
+
+export {
+  FloatingInput,
+  FloatingLabel,
+  FloatingLabelInput,
+  FloatingLabelInputRsc,
+}
