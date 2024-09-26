@@ -7,7 +7,23 @@ export const ImageSlider: Block = {
       name: 'slider',
       type: 'array',
       fields: [
-        { name: 'title', type: 'text' },
+        { name: 'tag', type: 'text' },
+        { admin: { language: 'css' }, type: 'code', name: 'tagStyle' },
+        {
+          type: 'row',
+          fields: [
+            { name: 'title', type: 'text' },
+            {
+              name: 'mask',
+              type: 'select',
+              options: [
+                { label: 'None', value: '' },
+                { label: 'Mask1', value: 'mask1' },
+                { label: 'Mask2', value: 'mask2' },
+              ],
+            },
+          ],
+        },
         {
           type: 'row',
           fields: [
@@ -17,11 +33,11 @@ export const ImageSlider: Block = {
         },
         {
           name: 'media',
-
           type: 'upload',
           relationTo: 'media',
           required: true,
         },
+        { admin: { language: 'css' }, type: 'code', name: 'imageStyle' },
       ],
     },
   ],
