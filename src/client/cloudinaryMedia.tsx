@@ -56,6 +56,7 @@ function Image({ media, className, style, isSmall }: Props) {
 
     return (
       <img
+        loading='lazy'
         className={className}
         style={style}
         sizes='(max-width: 1600px) 397px, 788px'

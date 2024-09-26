@@ -115,7 +115,10 @@ export function DarkMode() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='px-4 z-40 border-r outline-none'>
+      <DropdownMenuTrigger
+        aria-label='dark-mode-toggle'
+        className='px-4 z-40 border-r outline-none'
+      >
         {renderIcon()}
       </DropdownMenuTrigger>
       <DropdownMenuContent className=''>

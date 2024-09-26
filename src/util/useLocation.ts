@@ -6,7 +6,7 @@ export function useLocation(enable: boolean) {
     GeolocationCoordinates | null
   >(null)
 
-  const distance = (
+  const distance = React.useCallback((
     [lon, lat]: [number, number],
     unit: 'K' | 'N' = 'K',
   ): number => {
@@ -26,9 +26,9 @@ export function useLocation(enable: boolean) {
     if (unit == 'K') dist = dist * 1.609344
     if (unit == 'N') dist = dist * 0.8684
     return dist
-  }
+  }, [location])
 
-  React.useEffect(() => {
+  const getPosition = React.useCallback(() => {
     if (enable && location === null) {
       navigator
         .geolocation
@@ -36,8 +36,17 @@ export function useLocation(enable: boolean) {
     }
   }, [location])
 
+  // React.useEffect(() => {
+  //   if (enable && location === null) {
+  //     navigator
+  //       .geolocation
+  //       .getCurrentPosition(p => setLocation(p.coords))
+  //   }
+  // }, [location])
+
   return {
     location,
     distance,
+    getPosition,
   }
 }
