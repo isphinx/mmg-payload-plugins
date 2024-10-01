@@ -13,11 +13,11 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
         env:
-          PAT_SECRET: ${{ secrets.PAT_SECRET }}
+          FONT_TOKEN: ${{ secrets.FONT_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: sed -i.back "s|PAT_SECRET|${PAT_SECRET}|g" .npmrc
+      - run: sed -i.back "s|PAT_SECRET|${FONT_TOKEN}|g" .npmrc
       - run: echo $NODE_AUTH_TOKEN
-      - run: echo $PAT_SECRET
+      - run: echo $FONT_TOKEN
       - run: cat .npmrc
       - run: yarn
       - run: yarn build
