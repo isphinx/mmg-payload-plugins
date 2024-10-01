@@ -18,8 +18,8 @@ jobs:
       - run: echo $NODE_AUTH_TOKEN
       - run: echo $FONTAWESOME_TOKEN
       - run: echo ${{ secrets.FONT_TOKEN }}
+      - run: sed -i.back "s|PAT_SECRET|${{ secrets.FONT_TOKEN }}|g" .npmrc
       - run: cat .npmrc
-      - run: sed -i.back "s|PAT_SECRET|${FONTAWESOME_TOKEN}|g" .npmrc
       - run: yarn
       - run: yarn build
       - run: yarn publish
