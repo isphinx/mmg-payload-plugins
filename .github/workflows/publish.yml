@@ -3,6 +3,9 @@ name: mmg-payload-plugin Package
 on:
   push:
 
+env: 
+  PAT: ${{ secrets.PAT }}
+
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
@@ -12,6 +15,7 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
+      - run: sed -i.back "s|PAT_SECRET|${PAT}|g" .npmrc
       - run: yarn
       - run: yarn build
       - run: yarn publish
