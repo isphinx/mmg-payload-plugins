@@ -3,12 +3,11 @@ name: mmg-payload-plugin Package
 on:
   push:
 
-env: 
-  PAT: ${{ secrets.PAT }}
-
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
+    env: 
+      PAT: ${{ secrets.PAT_SECRET }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
