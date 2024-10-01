@@ -6,8 +6,6 @@ on:
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
-    env: 
-      PAT: ${{ secrets.PAT_SECRET }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,3 +20,4 @@ jobs:
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PAT: ${{ secrets.PAT_SECRET }}
