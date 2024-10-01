@@ -17,9 +17,7 @@ jobs:
           FONTAWESOME_TOKEN: ${{ secrets.FONT_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          sed -i.back "s|PAT_SECRET|${{ secrets.FONT_TOKEN }}|g" .npmrc
-          echo $NODE_AUTH_TOKEN
-          echo $FONTAWESOME_TOKEN
+          sed -i.back "s|PAT_SECRET|${FONTAWESOME_TOKEN}|g" .npmrc
           yarn
           yarn build
           yarn publish
