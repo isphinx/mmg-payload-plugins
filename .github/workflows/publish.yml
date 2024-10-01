@@ -12,12 +12,12 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PAT: ${{ secrets.PAT_SECRET }}
       - run: sed -i.back "s|PAT_SECRET|${PAT}|g" .npmrc
-      - run: cat ${PAT}
+      - run: cat $PAT
       - run: cat .npmrc
       - run: yarn
       - run: yarn build
       - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          PAT: ${{ secrets.PAT_SECRET }}
