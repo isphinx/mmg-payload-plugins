@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { CSSProperties } from 'react'
 
 export type AbstractNode<Type extends string> = {
@@ -240,7 +241,14 @@ export const defaultElementRenderers: ElementRenderers = {
     return React.createElement(
       element.tag,
       {
-        style: getElementStyle<'list'>(element),
+        style: {
+          ...getElementStyle<'list'>(element),
+          ...(_.get({
+            'number': { listStyleType: 'decimal', listStylePosition: 'inside' },
+            'bullet': { listStyleType: 'disc', listStylePosition: 'inside' },
+          }, element.listType)
+            || {}),
+        },
       },
       element.children,
     )
