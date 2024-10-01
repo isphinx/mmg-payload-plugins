@@ -16,7 +16,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           PAT: ${{ secrets.PAT_SECRET }}
       - run: sed -i.back "s|PAT_SECRET|${PAT}|g" .npmrc
-      - run: cat $PAT
+      - run: echo $NODE_AUTH_TOKEN
+      - run: echo $PAT
       - run: cat .npmrc
       - run: yarn
       - run: yarn build
