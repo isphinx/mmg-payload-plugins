@@ -1,6 +1,6 @@
 'use client'
 
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faMoonStars, faSunBright } from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon as I } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import {
@@ -79,7 +79,7 @@ export function DarkMode() {
     if (darkMode == 'light') {
       return (
         <I
-          icon={faSun}
+          icon={faSunBright}
           fixedWidth
           className='hover:text-primary text-4xl h-8'
         />
@@ -87,7 +87,7 @@ export function DarkMode() {
     } else if (darkMode == 'dark') {
       return (
         <I
-          icon={faMoon}
+          icon={faMoonStars}
           fixedWidth
           className='hover:text-primary text-4xl h-8'
         />
@@ -99,14 +99,14 @@ export function DarkMode() {
     ) {
       return (
         <I
-          icon={faMoon}
+          icon={faMoonStars}
           fixedWidth
           className='hover:text-primary text-4xl h-8'
         />
       )
     } else {return (
         <I
-          icon={faSun}
+          icon={faSunBright}
           fixedWidth
           className='hover:text-primary text-4xl h-8'
         />
