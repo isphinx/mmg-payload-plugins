@@ -12,10 +12,14 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
+      - name: Build
         env:
           FONTAWESOME_TOKEN: ${{ secrets.FONT_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: sed -i.back "s|PAT_SECRET|${{ secrets.FONT_TOKEN }}|g" .npmrc
-      - run: yarn
-      - run: yarn build
-      - run: yarn publish
+        run: |
+          sed -i.back "s|PAT_SECRET|${{ secrets.FONT_TOKEN }}|g" .npmrc
+          echo $NODE_AUTH_TOKEN
+          echo $FONTAWESOME_TOKEN
+          yarn
+          yarn build
+          yarn publish
