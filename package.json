@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.0.9-alpha.62",
+  "version": "0.0.9-alpha.63",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -76,7 +76,7 @@
     "lodash": "^4.17.21",
     "lucide-react": "^0.446.0",
     "moment": "^2.30.1",
-    "next": "15.0.0-canary.166",
+    "next": "15.0.0-canary.178",
     "next-auth": "beta",
     "payload": "beta",
     "pdfkit": "^0.15.0",
