@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { getToken } from 'next-auth/jwt'
 import { PayloadRequest } from 'payload'
-import { getClientIp } from 'request-ip'
+// import { getClientIp } from 'request-ip'
 import recaptcheCheck from './checkRecaptcha'
 
 async function getUser<User>(req: PayloadRequest): Promise<User | null> {

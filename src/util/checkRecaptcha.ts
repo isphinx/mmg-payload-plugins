@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { CollectionBeforeValidateHook } from 'payload'
-import { getClientIp } from 'request-ip'
+// import { getClientIp } from 'request-ip'
 
 export default async function recaptcheCheck(
   secret: string,
@@ -36,11 +36,11 @@ export const recaptchaGraphqlCheck: CollectionBeforeValidateHook = async (
   const integrition = await payload.findGlobal({ slug: 'Integration' })
   if (integrition.google?.recaptchaSecretKey) {
     const token = req.headers.get('recaptchatoken')
-    const addr = getClientIp(req as any)
+    // const addr = getClientIp(req as any)
     await recaptcheCheck(
       integrition.google?.recaptchaSecretKey || '',
       token || '',
-      addr || '',
+      '',
     )
   }
   return data
