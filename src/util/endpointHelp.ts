@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { getToken } from 'next-auth/jwt'
 import type { BasePayload, Endpoint } from 'payload'
-import { getClientIp } from 'request-ip'
+// import { getClientIp } from 'request-ip'
 import recaptcheCheck from './checkRecaptcha'
 
 export async function getUserName(req: Request): Promise<string> {
@@ -63,11 +63,11 @@ export function new_endpoint<User, T>(
         const integrition = await payload.findGlobal({ slug: 'Integration' })
         if (integrition.google?.recaptchaClientKey && recaptchaCheck) {
           const token = req.headers.get('recaptchatoken')
-          const addr = getClientIp(req as any)
-          const res = await recaptcheCheck(
+          // const addr = getClientIp(req as any)
+          await recaptcheCheck(
             integrition.google?.recaptchaSecretKey || '',
             token || '',
-            addr || '',
+            '',
           )
         }
         const { user, body } = await check_request<User>(

@@ -44,11 +44,11 @@ export function graphQLHelper<User, BasePayload>(
       const integrition = await context.req.payload.findGlobal({ slug })
       if (integrition.google?.recaptchaClientKey && recaptchaCheck) {
         const token = context.req.headers.get('recaptchatoken')
-        const addr = getClientIp(context.req as any)
+        // const addr = getClientIp(context.req as any)
         await recaptcheCheck(
           integrition.google?.recaptchaSecretKey || '',
           token || '',
-          addr || '',
+          '',
         )
       }
       return process(args, context.req.payload, user)
