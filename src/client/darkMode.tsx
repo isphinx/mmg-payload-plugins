@@ -85,7 +85,7 @@ export function DarkMode() {
           style={{
             '--fa-primary-color': 'hsl(var(--primary))',
             '--fa-secondary-color': 'hsl(var(--secondary))',
-          }}
+          } as React.CSSProperties}
         />
       )
     } else if (darkMode == 'dark') {
@@ -97,7 +97,7 @@ export function DarkMode() {
           style={{
             '--fa-primary-color': 'hsl(var(--primary))',
             '--fa-secondary-color': 'hsl(var(--secondary))',
-          }}
+          } as React.CSSProperties}
         />
       )
     } else if (
