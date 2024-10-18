@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.0.9-alpha.67",
+  "version": "0.0.9-alpha.68",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -52,6 +52,7 @@
     "@payloadcms/db-mongodb": "beta",
     "@payloadcms/db-postgres": "beta",
     "@payloadcms/email-nodemailer": "beta",
+    "@payloadcms/live-preview-react": "^0.2.0",
     "@payloadcms/next": "beta",
     "@payloadcms/plugin-form-builder": "beta",
     "@payloadcms/plugin-nested-docs": "beta",
