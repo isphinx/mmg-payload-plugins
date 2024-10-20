@@ -92,7 +92,7 @@
     "tailwindcss": "^3.4.14",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.6.3",
-    "vaul": "^1.0.0",
+    "vaul": "0.9.6",
     "zod": "^3.23.8"
   },
   "main": "./dist/index.js",
