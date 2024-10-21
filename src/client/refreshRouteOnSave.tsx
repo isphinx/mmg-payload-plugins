@@ -9,8 +9,11 @@ export const RefreshRouteOnSave: React.FC = () => {
 
   return (
     <PayloadLivePreview
-      refresh={() => router.refresh()}
-      serverURL={process.env.WEBSITE || 'http://localhost:9000/'}
+      refresh={() => {
+        console.log('refresh...')
+        router.refresh()
+      }}
+      serverURL={process.env.WEBSITE || 'http://localhost:9000'}
     />
   )
 }
