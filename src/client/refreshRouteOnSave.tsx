@@ -4,7 +4,7 @@ import { RefreshRouteOnSave as PayloadLivePreview } from '@payloadcms/live-previ
 import { useRouter } from 'next/navigation.js'
 import React from 'react'
 
-export const RefreshRouteOnSave: React.FC = () => {
+export const RefreshRouteOnSave = ({ serverUrl }: { serverUrl: string }) => {
   const router = useRouter()
 
   return (
@@ -13,7 +13,7 @@ export const RefreshRouteOnSave: React.FC = () => {
         console.log('refresh...')
         router.refresh()
       }}
-      serverURL={process.env.WEBSITE || 'http://localhost:9000'}
+      serverURL={serverUrl}
     />
   )
 }
