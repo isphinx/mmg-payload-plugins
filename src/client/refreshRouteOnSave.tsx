@@ -9,10 +9,7 @@ export const RefreshRouteOnSave = ({ serverUrl }: { serverUrl: string }) => {
 
   return (
     <PayloadLivePreview
-      refresh={() => {
-        console.log('refresh...')
-        router.refresh()
-      }}
+      refresh={() => router.refresh()}
       serverURL={serverUrl}
     />
   )
