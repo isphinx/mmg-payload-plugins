@@ -1,5 +1,6 @@
 import type { Block } from 'payload'
 import { Card } from './card'
+import { FacebookFeed } from './facebook-feed'
 import { GoogleMap } from './google-map'
 import { Image } from './image'
 import { RichText } from './rich-text'
@@ -27,7 +28,7 @@ export const GridContent: Block = {
     {
       name: 'content',
       type: 'blocks',
-      blocks: [Image, RichText, Card, StoreInfo, GoogleMap],
+      blocks: [Image, RichText, Card, StoreInfo, GoogleMap, FacebookFeed],
     },
   ],
 }
