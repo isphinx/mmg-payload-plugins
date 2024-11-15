@@ -5,7 +5,7 @@ import {
   FieldLabel,
   TextInput,
   useField,
-  useFieldProps,
+  // useFieldProps,
   useFormFields,
 } from '@payloadcms/ui'
 
@@ -21,10 +21,12 @@ type SlugComponentProps = {
 export const SlugComponent: React.FC<SlugComponentProps> = ({
   field,
   fieldToUse,
+  path,
+  readOnly,
   checkboxFieldPath: checkboxFieldPathFromProps,
 }) => {
   const { label } = field
-  const { path, readOnly: readOnlyFromProps } = useFieldProps()
+  // const { path, readOnly: readOnlyFromProps } = useFieldProps()
 
   const checkboxFieldPath = path.includes('.')
     ? `${path}.${checkboxFieldPathFromProps}`
@@ -63,7 +65,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
     [checkboxValue, setCheckboxValue],
   )
 
-  const readOnly = readOnlyFromProps || checkboxValue
+  // const readOnly = readOnlyFromProps || checkboxValue
 
   return (
     <div
@@ -79,7 +81,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
           alignItems: 'center',
         }}
       >
-        <FieldLabel field={field} htmlFor={`field-${path}`} label={label} />
+        <FieldLabel htmlFor={`field-${path}`} label={label} />
 
         <div
           style={{ margin: 0, paddingBottom: '0.3125rem' }}

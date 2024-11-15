@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.0.9-alpha.77",
+  "version": "0.0.9-alpha.78",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -48,7 +48,7 @@
     "@fortawesome/sharp-solid-svg-icons": "^6.6.0",
     "@fortawesome/sharp-thin-svg-icons": "^6.6.0",
     "@hookform/resolvers": "^3.9.0",
-    "@next/third-parties": "^14.2.15",
+    "@next/third-parties": "^15.0.3",
     "@payloadcms/db-mongodb": "beta",
     "@payloadcms/db-postgres": "beta",
     "@payloadcms/email-nodemailer": "beta",
@@ -76,7 +76,7 @@
     "get-stream": "^9.0.1",
     "graphql": "^16.9.0",
     "lodash": "^4.17.21",
-    "lucide-react": "^0.453.0",
+    "lucide-react": "^0.456.0",
     "moment": "^2.30.1",
     "next": "latest",
     "next-auth": "beta",
