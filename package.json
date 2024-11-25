@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -31,15 +31,8 @@
     "ts-node": "10.9.2"
   },
   "dependencies": {
+    "@awesome.me/kit-3425da5abb": "^1.0.19",
     "@fortawesome/fontawesome-svg-core": "6.7.1",
-    "@fortawesome/free-brands-svg-icons": "6.7.1",
-    "@fortawesome/free-regular-svg-icons": "6.7.1",
-    "@fortawesome/free-solid-svg-icons": "6.7.1",
-    "@fortawesome/pro-duotone-svg-icons": "6.7.1",
-    "@fortawesome/pro-light-svg-icons": "6.7.1",
-    "@fortawesome/pro-regular-svg-icons": "6.7.1",
-    "@fortawesome/pro-solid-svg-icons": "6.7.1",
-    "@fortawesome/pro-thin-svg-icons": "6.7.1",
     "@fortawesome/react-fontawesome": "0.2.2",
     "@fortawesome/sharp-duotone-solid-svg-icons": "6.7.1",
     "@fortawesome/sharp-light-svg-icons": "6.7.1",

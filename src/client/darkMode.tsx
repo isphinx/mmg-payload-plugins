@@ -1,6 +1,9 @@
 'use client'
 
-import { faMoonStars, faSunBright } from '@fortawesome/pro-duotone-svg-icons'
+import {
+  faMoonStars,
+  faSunBright,
+} from '@awesome.me/kit-3425da5abb/icons/duotone/solid'
 import { FontAwesomeIcon as I } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import {
