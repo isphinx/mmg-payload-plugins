@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.3.1",
+  "version": "0.3.1-1",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -34,11 +34,6 @@
     "@awesome.me/kit-3425da5abb": "^1.0.19",
     "@fortawesome/fontawesome-svg-core": "6.7.1",
     "@fortawesome/react-fontawesome": "0.2.2",
-    "@fortawesome/sharp-duotone-solid-svg-icons": "6.7.1",
-    "@fortawesome/sharp-light-svg-icons": "6.7.1",
-    "@fortawesome/sharp-regular-svg-icons": "6.7.1",
-    "@fortawesome/sharp-solid-svg-icons": "6.7.1",
-    "@fortawesome/sharp-thin-svg-icons": "6.7.1",
     "@hookform/resolvers": "3.9.1",
     "@next/third-parties": "15.0.3",
     "@payloadcms/db-mongodb": "3.1.0",
