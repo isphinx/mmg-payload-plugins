@@ -29,10 +29,10 @@
     preact "10.11.3"
     preact-render-to-string "5.2.3"
 
-"@awesome.me/kit-3425da5abb@1.0.8":
-  version "1.0.8"
-  resolved "https://npm.fontawesome.com/@awesome.me/kit-3425da5abb/-/1.0.8/kit-3425da5abb-1.0.8.tgz#5fe86d1d3daa8ff61d9b920a323a6a7686d4b3e2"
-  integrity sha512-TDALnFQd3q8YBF5AhaftIaqp4WsRfUSMKa0HNLY53Nl6asHuJymQB1geP7nouN40PJ3aqQeAM2N0tIzdciVmpw==
+"@awesome.me/kit-3425da5abb@1.0.19":
+  version "1.0.19"
+  resolved "https://npm.fontawesome.com/@awesome.me/kit-3425da5abb/-/1.0.19/kit-3425da5abb-1.0.19.tgz#6561e7cc11718d32293004fa4361fb003d00d0f4"
+  integrity sha512-0N0RI91tB8I/pT59V55Yk7mI5E0Y0RJ4yYLp3Dxg8SE/8hq/WKlrM5HMeRECNyTRdXLArez4pN97s5+v2MbPRg==
   dependencies:
     "@fortawesome/fontawesome-common-types" "^6.6.0"
 
