@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.3.1-4",
+  "version": "0.3.1-5",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -31,7 +31,7 @@
     "ts-node": "10.9.2"
   },
   "dependencies": {
-    "@awesome.me/kit-3425da5abb": "1.0.19",
+    "@awesome.me/kit-3425da5abb": "1.0.8",
     "@fortawesome/react-fontawesome": "0.2.2",
     "@hookform/resolvers": "3.9.1",
     "@next/third-parties": "15.0.3",
