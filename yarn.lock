@@ -29,10 +29,10 @@
     preact "10.11.3"
     preact-render-to-string "5.2.3"
 
-"@awesome.me/kit-3425da5abb@^1.0.19":
-  version "1.0.19"
-  resolved "https://npm.fontawesome.com/@awesome.me/kit-3425da5abb/-/1.0.19/kit-3425da5abb-1.0.19.tgz#6561e7cc11718d32293004fa4361fb003d00d0f4"
-  integrity sha512-0N0RI91tB8I/pT59V55Yk7mI5E0Y0RJ4yYLp3Dxg8SE/8hq/WKlrM5HMeRECNyTRdXLArez4pN97s5+v2MbPRg==
+"@awesome.me/kit-3425da5abb@1.0.16":
+  version "1.0.16"
+  resolved "https://npm.fontawesome.com/@awesome.me/kit-3425da5abb/-/1.0.16/kit-3425da5abb-1.0.16.tgz#7a9e63e9d83e229a7f5ee1d9ab3493ca7a310c15"
+  integrity sha512-pWOza95LUVn7qZj7v5/Gqs9vAdFdSB6w8Xqg6p1Cp1l4wXeqjMpn8uOf5WTohm8iw1XRzmiM/oC6OQUW/1wzlA==
   dependencies:
     "@fortawesome/fontawesome-common-types" "^6.6.0"
 
@@ -764,41 +764,6 @@
   integrity sha512-EnkrprPNqI6SXJl//m29hpaNzOp1bruISWaOiRtkMi/xSvHJlzc2j2JAYS7egxt/EbjSNV/k6Xy0AQI6vB2+1g==
   dependencies:
     prop-types "^15.8.1"
-
-"@fortawesome/sharp-duotone-solid-svg-icons@6.7.1":
-  version "6.7.1"
-  resolved "https://npm.fontawesome.com/@fortawesome/sharp-duotone-solid-svg-icons/-/6.7.1/sharp-duotone-solid-svg-icons-6.7.1.tgz#eec3161c108f140eb32d91d4e61cd56d266b7670"
-  integrity sha512-ISSnma0g+Wo2GsjA33uh1A17UL6V2wuLWMUaCs+MIUXV9UQ46zlo3MtrrIw33MH2lJcYFnNB6KKA4XwJl4GIbA==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "6.7.1"
-
-"@fortawesome/sharp-light-svg-icons@6.7.1":
-  version "6.7.1"
-  resolved "https://npm.fontawesome.com/@fortawesome/sharp-light-svg-icons/-/6.7.1/sharp-light-svg-icons-6.7.1.tgz#0a62e2648aae4c1641a217dbd1a578e2ea606c2c"
-  integrity sha512-YBnDCYbyEik4bTECC0RrqhVhHDaR5uOH61PCIMOshgrdofHIVRuXhTZoCtFivW3Dbwg6WmYy6DPCFadQDW4WSQ==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "6.7.1"
-
-"@fortawesome/sharp-regular-svg-icons@6.7.1":
-  version "6.7.1"
-  resolved "https://npm.fontawesome.com/@fortawesome/sharp-regular-svg-icons/-/6.7.1/sharp-regular-svg-icons-6.7.1.tgz#790bd5d330614de6fd0da02ccd40955de53cdda1"
-  integrity sha512-7m8gzCLDB1bhtjNtgSSUpiK/+vTtITGLpYATm6RvGxC09gC/X5PelIZmK5b9kIimxhy6oY6ESksvGj9t6ECXpQ==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "6.7.1"
-
-"@fortawesome/sharp-solid-svg-icons@6.7.1":
-  version "6.7.1"
-  resolved "https://npm.fontawesome.com/@fortawesome/sharp-solid-svg-icons/-/6.7.1/sharp-solid-svg-icons-6.7.1.tgz#3adf30ad8ab8b571a8740588c21d91199a95e970"
-  integrity sha512-z/9GX9m+UGiDrCyR9eE5nwLFkKj+D/fzGbWdLC2X0ny8P3sCtPCAGGLF51JQfsfFPAZoP285M/uSokOZLSndSg==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "6.7.1"
-
-"@fortawesome/sharp-thin-svg-icons@6.7.1":
-  version "6.7.1"
-  resolved "https://npm.fontawesome.com/@fortawesome/sharp-thin-svg-icons/-/6.7.1/sharp-thin-svg-icons-6.7.1.tgz#60ee27f2fdd2f70160459a83f149584cd1345191"
-  integrity sha512-Z+GSidQixUaiXMRNqKYeKFfOokFt39jQ8r1eHIfl3w2ZIeCjSw17PugHz91Ejxr1gWWULmsZbCYvS8hOeklN+g==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "6.7.1"
 
 "@hookform/resolvers@3.9.1":
   version "3.9.1"
