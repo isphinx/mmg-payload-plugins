@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.3.5-0",
+  "version": "0.3.5-1",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -26,16 +26,16 @@
     "@types/lodash": "4.17.13",
     "@types/node": "22.10.1",
     "@types/react": "19.0.1",
-    "@types/react-dom": "19.0.1",
+    "@types/react-dom": "19.0.2",
     "eslint": "9.16.0",
     "ts-node": "10.9.2"
   },
   "dependencies": {
-    "@awesome.me/kit-3425da5abb": "1.0.19",
+    "@awesome.me/kit-3425da5abb": "1.0.24",
     "@fortawesome/fontawesome-svg-core": "6.7.1",
     "@fortawesome/react-fontawesome": "0.2.2",
     "@hookform/resolvers": "3.9.1",
-    "@next/third-parties": "15.0.4",
+    "@next/third-parties": "15.1.0",
     "@payloadcms/db-mongodb": "3.5.0",
     "@payloadcms/db-postgres": "3.5.0",
     "@payloadcms/email-nodemailer": "3.5.0",
@@ -65,7 +65,7 @@
     "lodash": "4.17.21",
     "lucide-react": "0.468.0",
     "moment": "2.30.1",
-    "next": "15.0.4",
+    "next": "15.1.0",
     "next-auth": "beta",
     "payload": "3.5.0",
     "pdfkit": "0.15.1",
@@ -82,7 +82,7 @@
     "tailwindcss-animate": "1.0.7",
     "typescript": "5.7.2",
     "vaul": "0.9.6",
-    "zod": "3.23.8"
+    "zod": "3.24.0"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
