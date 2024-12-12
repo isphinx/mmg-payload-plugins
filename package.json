@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.3.6-0",
+  "version": "0.3.6-1",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -31,7 +31,7 @@
     "ts-node": "10.9.2"
   },
   "dependencies": {
-    "@awesome.me/kit-3425da5abb": "1.0.24",
+    "@awesome.me/kit-3425da5abb": "1.0.27",
     "@fortawesome/fontawesome-svg-core": "6.7.1",
     "@fortawesome/react-fontawesome": "0.2.2",
     "@hookform/resolvers": "3.9.1",
@@ -77,6 +77,7 @@
     "recharts": "2.14.1",
     "sonner": "1.7.1",
     "stripe": "17.4.0",
+    "tailwind-inview": "^1.0.14",
     "tailwind-merge": "2.5.5",
     "tailwindcss": "3.4.16",
     "tailwindcss-animate": "1.0.7",
