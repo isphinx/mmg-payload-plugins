@@ -225,12 +225,12 @@ export const defaultElementRenderers: ElementRenderers = {
         style: {
           ...getElementStyle<'heading'>(element),
           ...({
-            h1: { fontSize: '2.8rem' },
-            h2: { fontSize: '2rem' },
-            h3: { fontSize: '1.4rem' },
-            h4: { fontSize: '1.44231rem' },
-            h5: { fontSize: '1.08173rem' },
-            h6: { fontSize: '.961538rem' },
+            h1: { fontSize: '1.875rem', lineHeight: '2.25rem' },
+            h2: { fontSize: '1.5rem', lineHeight: '2.0rem' },
+            h3: { fontSize: '1.25rem', lineHeight: '1.75rem' },
+            h4: { fontSize: '1.125rem', lineHeight: '1.75rem' },
+            h5: { fontSize: '1.0rem', lineHeight: '1.5rem' },
+            h6: { fontSize: '0.875rem', lineHeight: '1.25rem' },
           }[element.tag] || {}),
         },
       },
