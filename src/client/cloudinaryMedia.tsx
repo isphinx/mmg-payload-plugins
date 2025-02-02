@@ -6,10 +6,11 @@ interface Props {
   className?: string
   style?: React.CSSProperties
   isSmall?: boolean
+  children: React.ReactNode
 }
 
 export default function CloudinaryMedia(
-  { media, className, style, isSmall = false }: Props,
+  { media, className, style, children, isSmall = false }: Props,
 ) {
   if (media.mimeType) {
     if (media.mimeType.startsWith('image')) {
@@ -19,7 +20,9 @@ export default function CloudinaryMedia(
           className={className}
           style={style}
           isSmall={isSmall}
-        />
+        >
+          {children}
+        </Image>
       )
     }
     if (media.mimeType.endsWith('video')) {
@@ -29,7 +32,9 @@ export default function CloudinaryMedia(
           className={className}
           style={style}
           isSmall={isSmall}
-        />
+        >
+          {children}
+        </Video>
       )
     }
     if (media.mimeType.endsWith('pdf')) {
@@ -39,7 +44,9 @@ export default function CloudinaryMedia(
           className={className}
           style={style}
           isSmall={isSmall}
-        />
+        >
+          {children}
+        </Pdf>
       )
     }
   }
@@ -47,7 +54,7 @@ export default function CloudinaryMedia(
   return <div>Wrong mimiType{media.mimeType}</div>
 }
 
-function Image({ media, className, style, isSmall }: Props) {
+function Image({ media, className, style, isSmall, children }: Props) {
   const image = media
   if (!image.cloudinary) return <>Empty URL</>
 
@@ -80,7 +87,9 @@ function Image({ media, className, style, isSmall }: Props) {
       style={style}
       src={image.cloudinary}
       alt={image.filename || ''}
-    />
+    >
+      {children}
+    </img>
   )
 }
 
