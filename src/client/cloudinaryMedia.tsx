@@ -6,7 +6,7 @@ interface Props {
   className?: string
   style?: React.CSSProperties
   isSmall?: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export default function CloudinaryMedia(
