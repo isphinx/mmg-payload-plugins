@@ -77,7 +77,9 @@ function Image({ media, className, style, isSmall, children }: Props) {
         ].join(',\n')}
         src={image.cloudinary}
         alt={image.filename || ''}
-      />
+      >
+        {children}
+      </img>
     )
   }
 
@@ -93,10 +95,19 @@ function Image({ media, className, style, isSmall, children }: Props) {
   )
 }
 
-function Video({ media }: Props) {
-  return <>video</>
+function Video({ media, children }: Props) {
+  return (
+    <video>
+      <source src={media.cloudinary} type={media.mimeType} />
+      {children}
+    </video>
+  )
 }
 
-function Pdf({ media }: Props) {
-  return <img src={media.cloudinary} alt={media.filename || ''} />
+function Pdf({ media, children }: Props) {
+  return (
+    <img src={media.cloudinary} alt={media.filename || ''}>
+      {children}
+    </img>
+  )
 }
