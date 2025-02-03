@@ -6,11 +6,10 @@ interface Props {
   className?: string
   style?: React.CSSProperties
   isSmall?: boolean
-  children?: React.ReactNode
 }
 
 export default function CloudinaryMedia(
-  { media, className, style, children, isSmall = false }: Props,
+  { media, className, style, isSmall = false }: Props,
 ) {
   if (media.mimeType) {
     if (media.mimeType.startsWith('image')) {
@@ -20,9 +19,7 @@ export default function CloudinaryMedia(
           className={className}
           style={style}
           isSmall={isSmall}
-        >
-          {children}
-        </Image>
+        />
       )
     }
     if (media.mimeType.endsWith('video')) {
@@ -32,9 +29,7 @@ export default function CloudinaryMedia(
           className={className}
           style={style}
           isSmall={isSmall}
-        >
-          {children}
-        </Video>
+        />
       )
     }
     if (media.mimeType.endsWith('pdf')) {
@@ -44,9 +39,7 @@ export default function CloudinaryMedia(
           className={className}
           style={style}
           isSmall={isSmall}
-        >
-          {children}
-        </Pdf>
+        />
       )
     }
   }
@@ -54,7 +47,7 @@ export default function CloudinaryMedia(
   return <div>Wrong mimiType{media.mimeType}</div>
 }
 
-function Image({ media, className, style, isSmall, children }: Props) {
+function Image({ media, className, style, isSmall }: Props) {
   const image = media
   if (!image.cloudinary) return <>Empty URL</>
 
@@ -77,9 +70,7 @@ function Image({ media, className, style, isSmall, children }: Props) {
         ].join(',\n')}
         src={image.cloudinary}
         alt={image.filename || ''}
-      >
-        {children}
-      </img>
+      />
     )
   }
 
@@ -89,25 +80,18 @@ function Image({ media, className, style, isSmall, children }: Props) {
       style={style}
       src={image.cloudinary}
       alt={image.filename || ''}
-    >
-      {children}
-    </img>
+    />
   )
 }
 
-function Video({ media, children }: Props) {
+function Video({ media }: Props) {
   return (
     <video>
       <source src={media.cloudinary} type={media.mimeType} />
-      {children}
     </video>
   )
 }
 
-function Pdf({ media, children }: Props) {
-  return (
-    <img src={media.cloudinary} alt={media.filename || ''}>
-      {children}
-    </img>
-  )
+function Pdf({ media }: Props) {
+  return <img src={media.cloudinary} alt={media.filename || ''} />
 }
