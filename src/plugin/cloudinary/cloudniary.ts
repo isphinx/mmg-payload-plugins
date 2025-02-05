@@ -89,7 +89,7 @@ const upload2cloudiary = async (
       ...(file.mimeType.startsWith('image')
         ? {
           effect: 'trim',
-          format: 'webp',
+          format: file.mimeType.includes('svg') ? 'svg' : 'webp',
           transformation: { crop: 'limit', height: 1600, weight: 1600 },
         }
         : {}),

@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.3.20-4",
+  "version": "0.3.20-5",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -24,7 +24,7 @@
   "devDependencies": {
     "@payloadcms/ui": "3.20.0",
     "@types/lodash": "4.17.15",
-    "@types/node": "22.13.0",
+    "@types/node": "22.13.1",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
     "eslint": "9.19.0",
