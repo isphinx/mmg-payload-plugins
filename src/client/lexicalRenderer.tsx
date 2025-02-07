@@ -200,7 +200,7 @@ const IS_SUBSCRIPT = 1 << 5
 const IS_SUPERSCRIPT = 1 << 6
 const IS_HIGHLIGHT = 1 << 7
 
-function getElementStyle<Type extends string>({
+export function getElementStyle<Type extends string>({
   indent,
   format,
 }: AbstractElementNode<Type>): CSSProperties {
