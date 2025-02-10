@@ -181,7 +181,7 @@ export type LexicalReactRendererContent = {
 
 export type LexicalReactRendererProps<Blocks extends { [key: string]: any }> = {
   content: LexicalReactRendererContent
-  elementRenderers?: ElementRenderers
+  elementRenderers?: Partial<ElementRenderers>
   renderMark?: RenderMark
   blockRenderers?: {
     [BlockName in Extract<keyof Blocks, string>]?: (
@@ -200,7 +200,7 @@ const IS_SUBSCRIPT = 1 << 5
 const IS_SUPERSCRIPT = 1 << 6
 const IS_HIGHLIGHT = 1 << 7
 
-export function getElementStyle<Type extends string>({
+export function GetElementStyle<Type extends string>({
   indent,
   format,
 }: AbstractElementNode<Type>): CSSProperties {
@@ -223,7 +223,7 @@ export const defaultElementRenderers: ElementRenderers = {
       element.tag,
       {
         style: {
-          ...getElementStyle<'heading'>(element),
+          ...GetElementStyle<'heading'>(element),
           ...({
             h1: { fontSize: '1.875rem', lineHeight: '2.25rem' },
             h2: { fontSize: '1.5rem', lineHeight: '2.0rem' },
@@ -242,7 +242,7 @@ export const defaultElementRenderers: ElementRenderers = {
       element.tag,
       {
         style: {
-          ...getElementStyle<'list'>(element),
+          ...GetElementStyle<'list'>(element),
           ...(_.get({
             'number': { listStyleType: 'decimal', listStylePosition: 'inside' },
             'bullet': { listStyleType: 'disc', listStylePosition: 'inside' },
@@ -255,14 +255,14 @@ export const defaultElementRenderers: ElementRenderers = {
   },
   listItem: (element) => {
     return (
-      <li style={getElementStyle<'listitem'>(element)}>{element.children}</li>
+      <li style={GetElementStyle<'listitem'>(element)}>{element.children}</li>
     )
   },
   paragraph: (element) => {
     return (
       <p
         style={{
-          ...getElementStyle<'paragraph'>(element),
+          ...GetElementStyle<'paragraph'>(element),
           display: 'block',
           marginBlockStart: '1em',
           marginBlockEnd: '1em',
@@ -277,7 +277,7 @@ export const defaultElementRenderers: ElementRenderers = {
     <a
       href={element.fields.url}
       target={element.fields.newTab ? '_blank' : '_self'}
-      style={getElementStyle<'link'>(element)}
+      style={GetElementStyle<'link'>(element)}
     >
       {element.children}
     </a>
@@ -286,13 +286,13 @@ export const defaultElementRenderers: ElementRenderers = {
     <a
       href={element.fields.url}
       target={element.fields.newTab ? '_blank' : '_self'}
-      style={getElementStyle<'autolink'>(element)}
+      style={GetElementStyle<'autolink'>(element)}
     >
       {element.children}
     </a>
   ),
   quote: (element) => (
-    <blockquote style={getElementStyle<'quote'>(element)}>
+    <blockquote style={GetElementStyle<'quote'>(element)}>
       {element.children}
     </blockquote>
   ),
@@ -305,7 +305,7 @@ export const defaultElementRenderers: ElementRenderers = {
   },
 }
 
-export const defaultRenderMark: RenderMark = (mark) => {
+const defaultRenderMark: RenderMark = (mark) => {
   const style: CSSProperties = {}
 
   if (mark.bold) {
@@ -349,75 +349,75 @@ export const defaultRenderMark: RenderMark = (mark) => {
 
 export function LexicalReactRenderer<Blocks extends { [key: string]: any }>({
   content,
-  elementRenderers = defaultElementRenderers,
+  elementRenderers,
   renderMark = defaultRenderMark,
   blockRenderers = {},
 }: LexicalReactRendererProps<Blocks>) {
   const renderElement = React.useCallback(
     (node: Node, children?: React.ReactNode) => {
-      if (!elementRenderers) {
-        throw new Error("'elementRenderers' prop not provided.")
-      }
+      const theRenderers = elementRenderers
+        ? { ...defaultElementRenderers, ...elementRenderers }
+        : defaultElementRenderers
 
       if (node.type === 'link' && node.fields) {
-        return elementRenderers.link({
+        return theRenderers.link({
           ...node,
           children,
         })
       }
 
       if (node.type === 'autolink' && node.fields) {
-        return elementRenderers.autolink({
+        return theRenderers.autolink({
           ...node,
           children,
         })
       }
 
       if (node.type === 'heading') {
-        return elementRenderers.heading({
+        return theRenderers.heading({
           ...node,
           children,
         })
       }
 
       if (node.type === 'paragraph') {
-        return elementRenderers.paragraph({
+        return theRenderers.paragraph({
           ...node,
           children,
         })
       }
 
       if (node.type === 'list') {
-        return elementRenderers.list({
+        return theRenderers.list({
           ...node,
           children,
         })
       }
 
       if (node.type === 'listitem') {
-        return elementRenderers.listItem({
+        return theRenderers.listItem({
           ...node,
           children,
         })
       }
 
       if (node.type === 'quote') {
-        return elementRenderers.quote({
+        return theRenderers.quote({
           ...node,
           children,
         })
       }
 
       if (node.type === 'linebreak') {
-        return elementRenderers.linebreak()
+        return theRenderers.linebreak()
       }
 
       if (node.type === 'tab') {
-        return elementRenderers.tab()
+        return theRenderers.tab()
       }
 
       if (node.type === 'upload') {
-        return elementRenderers.upload(node)
+        return theRenderers.upload(node)
       }
 
       throw new Error(`Missing element renderer for node type '${node.type}'`)
