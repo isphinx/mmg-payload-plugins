@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.3.23-1",
+  "version": "0.3.23-2",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -53,6 +53,7 @@
     "@radix-ui/themes": "3.2.0",
     "@stripe/react-stripe-js": "3.1.1",
     "@stripe/stripe-js": "5.6.0",
+    "@tailwindcss/postcss": "^4.0.6",
     "class-variance-authority": "0.7.1",
     "cloudinary": "2.5.1",
     "clsx": "2.1.1",
