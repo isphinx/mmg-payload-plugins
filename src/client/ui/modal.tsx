@@ -14,19 +14,17 @@ const ResponsiveModalClose = DialogPrimitive.Close
 
 const ResponsiveModalPortal = DialogPrimitive.Portal
 
-const ResponsiveModalOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
+const ResponsiveModalOverlay = (
+  { className, ...props }: React.ComponentProps<typeof DialogPrimitive.Overlay>,
+) => (
   <DialogPrimitive.Overlay
     className={cn(
       'fixed inset-0 z-50 bg-background/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       className,
     )}
     {...props}
-    ref={ref}
   />
-))
+)
 ResponsiveModalOverlay.displayName = DialogPrimitive.Overlay.displayName
 
 const ResponsiveModalVariants = cva(
@@ -55,18 +53,17 @@ const ResponsiveModalVariants = cva(
 
 interface ResponsiveModalContentProps
   extends
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>,
+    React.ComponentProps<typeof DialogPrimitive.Content>,
     VariantProps<typeof ResponsiveModalVariants>
 {}
 
-const ResponsiveModalContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  ResponsiveModalContentProps
->(({ side = 'bottom', className, children, ...props }, ref) => (
+const ResponsiveModalContent = (
+  { side = 'bottom', className, children, ...props }:
+    ResponsiveModalContentProps,
+) => (
   <ResponsiveModalPortal>
     <ResponsiveModalOverlay />
     <DialogPrimitive.Content
-      ref={ref}
       className={cn(ResponsiveModalVariants({ side }), className)}
       {...props}
     >
@@ -77,7 +74,7 @@ const ResponsiveModalContent = React.forwardRef<
       </ResponsiveModalClose>
     </DialogPrimitive.Content>
   </ResponsiveModalPortal>
-))
+)
 ResponsiveModalContent.displayName = DialogPrimitive.Content.displayName
 
 const ResponsiveModalHeader = (
@@ -106,28 +103,26 @@ const ResponsiveModalFooter = (
 )
 ResponsiveModalFooter.displayName = 'ResponsiveModalFooter'
 
-const ResponsiveModalTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(({ className, ...props }, ref) => (
+const ResponsiveModalTitle = (
+  { className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>,
+) => (
   <DialogPrimitive.Title
-    ref={ref}
     className={cn('text-lg font-semibold text-foreground', className)}
     {...props}
   />
-))
+)
 ResponsiveModalTitle.displayName = DialogPrimitive.Title.displayName
 
-const ResponsiveModalDescription = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
+const ResponsiveModalDescription = (
+  { className, ...props }: React.ComponentProps<
+    typeof DialogPrimitive.Description
+  >,
+) => (
   <DialogPrimitive.Description
-    ref={ref}
     className={cn('text-sm text-muted-foreground', className)}
     {...props}
   />
-))
+)
 ResponsiveModalDescription.displayName = DialogPrimitive.Description.displayName
 
 export {

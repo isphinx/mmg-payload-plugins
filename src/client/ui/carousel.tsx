@@ -200,12 +200,11 @@ const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(
-  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  ({ className, variant = 'outline', size = 'icon', ...props }) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
     return (
       <Button
-        ref={ref}
         variant={variant}
         size={size}
         className={cn(
@@ -231,12 +230,11 @@ const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(
-  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  ({ className, variant = 'outline', size = 'icon', ...props }) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel()
 
     return (
       <Button
-        ref={ref}
         variant={variant}
         size={size}
         className={cn(
@@ -262,7 +260,7 @@ const CarouselDots = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(
-  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  ({ className, variant = 'outline', size = 'icon', ...props }) => {
     const { api } = useCarousel()
 
     if (!api) return null
@@ -292,11 +290,11 @@ const CarouselThumbnail = (
 
 export {
   Carousel,
-  type CarouselApi,
   CarouselContent,
   CarouselDots,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
   CarouselThumbnail,
+  type CarouselApi,
 }
