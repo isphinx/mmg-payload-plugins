@@ -22,6 +22,15 @@ export const cloudinaryPlugin =
                 name: 'cloudinary',
                 required: true,
               },
+              {
+                type: 'select',
+                name: 'effect',
+                defaultValue: 'trim',
+                options: [
+                  { label: 'N/A', value: '' },
+                  { label: 'Trim', value: 'trim' },
+                ],
+              },
             ],
             hooks: {
               ...(existingCollection.hooks || {}),

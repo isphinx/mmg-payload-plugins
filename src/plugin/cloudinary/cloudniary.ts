@@ -16,7 +16,7 @@ export const getBeforeChange = ({ cloudName, apiKey, apiSecret, uploadDir }: {
   apiKey: string
   apiSecret: string
   uploadDir: string
-}): CollectionBeforeChangeHook<FileData & TypeWithID> =>
+}): CollectionBeforeChangeHook<FileData & TypeWithID & { effect: string }> =>
 async ({ data, req }) => {
   const file = req.file
 
@@ -29,6 +29,7 @@ async ({ data, req }) => {
       apiKey,
       apiSecret,
       uploadDir,
+      effect: data.effect || '',
       file: {
         buffer: file.data,
         filename: data.filename,
@@ -70,12 +71,13 @@ async ({ data, req }) => {
 // }
 
 const upload2cloudiary = async (
-  { file, cloudName, apiKey, apiSecret, uploadDir }: {
+  { file, cloudName, apiKey, apiSecret, uploadDir, effect }: {
     file: File
     cloudName: string
     apiKey: string
     apiSecret: string
     uploadDir: string
+    effect: string
   },
 ) => {
   v2.config({ cloud_name: cloudName, api_key: apiKey, api_secret: apiSecret })
@@ -88,7 +90,7 @@ const upload2cloudiary = async (
       overwrite: false,
       ...(file.mimeType.startsWith('image')
         ? {
-          effect: 'trim',
+          effect: effect,
           format: file.mimeType.includes('svg') ? 'svg' : 'webp',
           transformation: { crop: 'limit', height: 1600, weight: 1600 },
         }
