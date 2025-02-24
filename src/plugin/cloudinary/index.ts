@@ -25,7 +25,7 @@ export const cloudinaryPlugin =
               {
                 type: 'select',
                 name: 'effect',
-                defaultValue: 'trim',
+                defaultValue: 'na',
                 options: [
                   { label: 'N/A', value: 'na' },
                   { label: 'Trim', value: 'trim' },
