@@ -90,9 +90,13 @@ const upload2cloudiary = async (
       overwrite: false,
       ...(file.mimeType.startsWith('image')
         ? {
-          effect: effect,
           format: file.mimeType.includes('svg') ? 'svg' : 'webp',
-          transformation: { crop: 'limit', height: 1600, weight: 1600 },
+          transformation: {
+            crop: 'limit',
+            height: 1600,
+            weight: 1600,
+            ...(effect == 'na' ? {} : { effect }),
+          },
         }
         : {}),
       ...(file.mimeType.startsWith('video') ? { resource_type: 'video' } : {}),

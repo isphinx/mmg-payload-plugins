@@ -27,7 +27,7 @@ export const cloudinaryPlugin =
                 name: 'effect',
                 defaultValue: 'trim',
                 options: [
-                  { label: 'N/A', value: '' },
+                  { label: 'N/A', value: 'na' },
                   { label: 'Trim', value: 'trim' },
                 ],
               },
