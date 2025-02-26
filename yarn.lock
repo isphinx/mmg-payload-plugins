@@ -1427,6 +1427,14 @@
   resolved "https://registry.yarnpkg.com/@payloadcms/plugin-nested-docs/-/plugin-nested-docs-3.24.0.tgz#ba99b10727be586093e5aaccf18c6af5929a0971"
   integrity sha512-l2d+pdCX/q5gc3ZFZviyY1dY1yZZWpxHhVHlJZVfJvhM6t3Wr8EeTwzGxBrz4D9uIYDmKGIcb1ZeBU1zLM7hFg==
 
+"@payloadcms/plugin-search@^3.24.0":
+  version "3.24.0"
+  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-search/-/plugin-search-3.24.0.tgz#06b350c131d31db5472e3e0bfe6019ee4d87a3cb"
+  integrity sha512-2BfPhUugpvD/c19Qlkt7cVR55E2f1uEUUbM9CguiaAxb9267VQsIn4DN7CJz+V0LnctWZR6ZyGvudRyZ7gxorw==
+  dependencies:
+    "@payloadcms/next" "3.24.0"
+    "@payloadcms/ui" "3.24.0"
+
 "@payloadcms/plugin-seo@3.24.0":
   version "3.24.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-3.24.0.tgz#cf1b3a0ad972db8480f8375fedcc8f3c5e46d0c3"

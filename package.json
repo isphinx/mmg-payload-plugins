@@ -1,6 +1,6 @@
 {
   "name": "mmg-payload-plugins",
-  "version": "0.3.24-5",
+  "version": "0.3.24-6",
   "author": "lucas",
   "description": "payloadcms plugins",
   "keywords": [
@@ -43,6 +43,7 @@
     "@payloadcms/next": "3.24.0",
     "@payloadcms/plugin-form-builder": "3.24.0",
     "@payloadcms/plugin-nested-docs": "3.24.0",
+    "@payloadcms/plugin-search": "^3.24.0",
     "@payloadcms/plugin-seo": "3.24.0",
     "@payloadcms/richtext-lexical": "3.24.0",
     "@radix-ui/react-accordion": "1.2.3",
