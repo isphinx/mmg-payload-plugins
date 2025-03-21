@@ -41,16 +41,17 @@ async ({ data, req }) => {
     // if (process.env.NODE_ENV != 'production')
     // console.log(cloudres, data)
 
-    data['url'] = `https://res.cloudinary.com/${cloudName}/${
-      data.mimeType.startsWith('video') ? 'video/' : ''
-    }${cloudres.public_id}`
+    data['url'] =
+      `https://res.cloudinary.com/${cloudName}/${cloudres.public_id}`
     data['width'] = cloudres.width
     data['height'] = cloudres.height
     data['filesize'] = cloudres.bytes
     data = _.set(
       data,
       'cloudinary',
-      `https://res.cloudinary.com/${cloudName}/${cloudres.public_id}`,
+      `https://res.cloudinary.com/${cloudName}/${
+        data.mimeType.startsWith('video') ? 'video/upload/' : ''
+      }${cloudres.public_id}`,
     )
     if (cloudres.format == 'pdf' && !!cloudres.pages) {
       data['filename'] = data.filename + `-page-${cloudres.pages}`
