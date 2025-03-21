@@ -22,7 +22,7 @@ export default function CloudinaryMedia(
         />
       )
     }
-    if (media.mimeType.endsWith('video')) {
+    if (media.mimeType.startsWith('video')) {
       return (
         <Video
           media={media}
@@ -32,7 +32,7 @@ export default function CloudinaryMedia(
         />
       )
     }
-    if (media.mimeType.endsWith('pdf')) {
+    if (media.mimeType.startsWith('pdf')) {
       return (
         <Pdf
           media={media}
