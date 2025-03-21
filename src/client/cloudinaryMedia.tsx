@@ -86,8 +86,11 @@ function Image({ media, className, style, isSmall }: Props) {
 
 function Video({ media }: Props) {
   return (
-    <video>
-      <source src={media.cloudinary} type={media.mimeType} />
+    <video
+      className='w-full h-full aspect-video bg-black object-contain object-center'
+      autoPlay
+    >
+      <source src={media.cloudinary + 'webm'} type={media.mimeType} />
     </video>
   )
 }
