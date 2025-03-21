@@ -41,8 +41,9 @@ async ({ data, req }) => {
     // if (process.env.NODE_ENV != 'production')
     // console.log(cloudres, data)
 
-    data['url'] =
-      `https://res.cloudinary.com/${cloudName}/${cloudres.public_id}`
+    data['url'] = `https://res.cloudinary.com/${cloudName}/${
+      data.mimeType.startsWith('video') ? 'video/' : ''
+    }${cloudres.public_id}`
     data['width'] = cloudres.width
     data['height'] = cloudres.height
     data['filesize'] = cloudres.bytes
