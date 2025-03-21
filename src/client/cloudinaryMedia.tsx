@@ -90,7 +90,7 @@ function Video({ media }: Props) {
       className='w-full h-full aspect-video bg-black object-contain object-center'
       autoPlay
     >
-      <source src={media.cloudinary + '.webm'} type={media.mimeType} />
+      <source src={media.cloudinary} type={media.mimeType} />
     </video>
   )
 }
