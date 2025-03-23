@@ -5,11 +5,12 @@ interface Props {
   media: FileData & { cloudinary: string }
   className?: string
   style?: React.CSSProperties
+  isWebm?: boolean
   isSmall?: boolean
 }
 
 export default function CloudinaryMedia(
-  { media, className, style, isSmall = false }: Props,
+  { media, className, style, isWebm = false, isSmall = false }: Props,
 ) {
   if (media.mimeType) {
     if (media.mimeType.startsWith('image')) {
@@ -28,6 +29,7 @@ export default function CloudinaryMedia(
           media={media}
           className={className}
           style={style}
+          isWebm={isWebm}
           isSmall={isSmall}
         />
       )
@@ -84,13 +86,15 @@ function Image({ media, className, style, isSmall }: Props) {
   )
 }
 
-function Video({ media }: Props) {
+function Video({ media, isWebm }: Props) {
   return (
     <video
       className='w-full h-full aspect-video bg-black object-contain object-center'
       autoPlay
     >
-      <source src={media.cloudinary} type={media.mimeType} />
+      {isWebm
+        ? <source src={media.cloudinary + '.webm'} type='video/webm' />
+        : <source src={media.cloudinary} type={media.mimeType} />}
     </video>
   )
 }
